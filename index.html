@@ -612,14 +612,16 @@ inputMessage.onkeydown = (e) => {
   <div class="container">
     <h2 class="text-center mb-5" data-aos="fade-up">Struktur Organisasi</h2>
     <div class="position-relative">
-      
+
       <!-- Tombol Geser Kiri -->
       <button class="btn btn-outline-secondary position-absolute top-50 start-0 translate-middle-y z-1 d-none" id="prevStruktur">
         &#10094;
       </button>
 
       <!-- Kontainer Struktur -->
-      <div class="d-flex gap-3 px-4 flex-nowrap" id="struktur-container" data-aos="fade-up" style="scroll-behavior: smooth; overflow-x: auto; max-width: 100%;">
+      <div class="d-flex gap-3 px-4 flex-nowrap" id="struktur-container"
+           data-aos="fade-up"
+           style="scroll-behavior: smooth; overflow-x: auto; max-width: 100%;">
         
         <!-- Anggota: Ketua -->
         <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
@@ -627,10 +629,39 @@ inputMessage.onkeydown = (e) => {
           data-jabatan="Ketua"
           data-foto="https://source.unsplash.com/200x200/?person"
           data-deskripsi="Memimpin dan mengoordinasikan seluruh kegiatan organisasi.">
-          <img src="https://source.unsplash.com/200x200/?person" class="card-img-top rounded-circle mx-auto mt-3" style="width:120px;height:120px;object-fit:cover;" alt="Ketua">
+          <img src="https://source.unsplash.com/200x200/?person" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:120px;height:120px;object-fit:cover;" alt="Ketua">
           <div class="card-body">
-            <h5 class="card-title mb-1">Andi Prasetyo</h5>
+            <h5 class="card-title mb-1">Juwari</h5>
             <p class="text-muted">Ketua</p>
+          </div>
+        </div>
+
+        <!-- Anggota: Wakil Ketua I -->
+        <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
+          data-nama="Lestari Wulandari"
+          data-jabatan="Wakil Ketua I"
+          data-foto="https://source.unsplash.com/200x200/?woman"
+          data-deskripsi="Membantu Ketua dalam pelaksanaan tugas.">
+          <img src="https://source.unsplash.com/200x200/?woman" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:120px;height:120px;object-fit:cover;" alt="Wakil Ketua I">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Nopek</h5>
+            <p class="text-muted">Wakil Ketua I</p>
+          </div>
+        </div>
+
+        <!-- Anggota: Wakil Ketua II -->
+        <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
+          data-nama="Lestari Wulandari"
+          data-jabatan="Wakil Ketua II"
+          data-foto="https://source.unsplash.com/200x200/?woman"
+          data-deskripsi="Membantu Ketua dalam pelaksanaan tugas.">
+          <img src="https://source.unsplash.com/200x200/?woman" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:120px;height:120px;object-fit:cover;" alt="Wakil Ketua II">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Nopi</h5>
+            <p class="text-muted">Wakil Ketua II</p>
           </div>
         </div>
 
@@ -639,15 +670,31 @@ inputMessage.onkeydown = (e) => {
           data-nama="Lestari Wulandari"
           data-jabatan="Sekretaris"
           data-foto="https://source.unsplash.com/200x200/?woman"
-          data-deskripsi="Mencatat dan mengelola administrasi serta dokumentasi organisasi.">
-          <img src="https://source.unsplash.com/200x200/?woman" class="card-img-top rounded-circle mx-auto mt-3" style="width:120px;height:120px;object-fit:cover;" alt="Sekretaris">
+          data-deskripsi="Mencatat dan mengelola administrasi organisasi.">
+          <img src="https://source.unsplash.com/200x200/?woman" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:120px;height:120px;object-fit:cover;" alt="Sekretaris">
           <div class="card-body">
             <h5 class="card-title mb-1">Lestari Wulandari</h5>
             <p class="text-muted">Sekretaris</p>
           </div>
         </div>
 
-        <!-- Tambahkan anggota lainnya sesuai struktur -->
+        <!-- Anggota: Bendahara -->
+        <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
+          data-nama="Anang"
+          data-jabatan="Bendahara"
+          data-foto="https://source.unsplash.com/200x200/?man"
+          data-deskripsi="Mengelola keuangan dan pembukuan organisasi.">
+          <img src="https://source.unsplash.com/200x200/?man" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:120px;height:120px;object-fit:cover;" alt="Bendahara">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Anang</h5>
+            <p class="text-muted">Bendahara</p>
+          </div>
+        </div>
+
+        <!-- Tambahkan anggota lain di sini -->
+
       </div>
 
       <!-- Tombol Geser Kanan -->
@@ -657,6 +704,44 @@ inputMessage.onkeydown = (e) => {
 
     </div>
   </div>
+</section>
+
+<!-- Sembunyikan scrollbar -->
+<style>
+  #struktur-container {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none;    /* Firefox */
+  }
+
+  #struktur-container::-webkit-scrollbar {
+    display: none;            /* Chrome, Safari */
+  }
+</style>
+
+<!-- Navigasi Scroll Script -->
+<script>
+  const strukturContainer = document.getElementById('struktur-container');
+  const prevBtn = document.getElementById('prevStruktur');
+  const nextBtn = document.getElementById('nextStruktur');
+
+  function updateButtons() {
+    const maxScrollLeft = strukturContainer.scrollWidth - strukturContainer.clientWidth;
+    prevBtn.classList.toggle('d-none', strukturContainer.scrollLeft <= 0);
+    nextBtn.classList.toggle('d-none', strukturContainer.scrollLeft >= maxScrollLeft - 10);
+  }
+
+  prevBtn.addEventListener('click', () => {
+    strukturContainer.scrollBy({ left: -260, behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', () => {
+    strukturContainer.scrollBy({ left: 260, behavior: 'smooth' });
+  });
+
+  strukturContainer.addEventListener('scroll', updateButtons);
+  window.addEventListener('load', updateButtons);
+</script>
+
 </section>
 <!-- (Script removed because it does not match the HTML structure and causes errors) -->
 
@@ -693,9 +778,9 @@ inputMessage.onkeydown = (e) => {
 <!-- Script -->
 <script>
   function scrollStruktur(direction) {
-    const container = document.getElementById("struktur-container");
+    const strukturContainer = document.getElementById("struktur-container");
     const scrollAmount = 260;
-    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    strukturContainer.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
   }
 
   // Event listener untuk popup modal
@@ -776,15 +861,15 @@ inputMessage.onkeydown = (e) => {
 </section>
 <script>
   // Geser horizontal
-  const container = document.getElementById('programContainer');
+  const programContainer = document.getElementById('programContainer');
   const scrollAmount = 320;
 
   document.getElementById('scrollLeft').addEventListener('click', () => {
-    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    programContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   });
 
   document.getElementById('scrollRight').addEventListener('click', () => {
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    programContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   });
 
   // Efek Tilt Hover
