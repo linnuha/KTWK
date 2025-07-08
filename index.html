@@ -168,11 +168,13 @@
     <a class="navbar-brand fw-bold" href="#beranda">
       <img src="assets/img/logo.png" class="me-2" alt="Logo" style="height: 40px;"> Karang Taruna
     </a>
-    <button id="menuToggle" class="navbar-toggler bg-primary text-white rounded" type="button"
-            data-bs-toggle="collapse" data-bs-target="#mainNavCollapse"
-            aria-controls="mainNavCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span id="menuText">Menu</span> <i class="fas fa-bars ms-1"></i>
-    </button>
+    
+    <!-- HAPUS data-bs-toggle dan data-bs-target -->
+    <button id="menuToggle" class="navbar-toggler d-lg-none bg-primary text-white rounded d-flex align-items-center"
+        type="button" aria-label="Toggle navigation">
+  <span id="menuText" class="me-2">Menu</span>
+  <i class="fas fa-bars"></i>
+</button>
 
     <div class="collapse navbar-collapse" id="mainNavCollapse">
       <ul class="navbar-nav ms-auto">
@@ -189,27 +191,35 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const navCollapse = document.getElementById("mainNavCollapse");
+    const menuToggle = document.getElementById("menuToggle");
     const menuText = document.getElementById("menuText");
+    const bsCollapse = new bootstrap.Collapse(navCollapse, { toggle: false });
 
-    navCollapse.addEventListener('shown.bs.collapse', function () {
-      menuText.textContent = "Tutup";
+    // Tombol toggle
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navCollapse.classList.contains("show");
+
+      if (isOpen) {
+        bsCollapse.hide();
+        menuText.textContent = "Menu";
+      } else {
+        bsCollapse.show();
+        menuText.textContent = "Tutup";
+      }
     });
 
-    navCollapse.addEventListener('hidden.bs.collapse', function () {
-      menuText.textContent = "Menu";
-    });
-
-    // Tutup menu saat link diklik (di mobile)
+    // Tutup menu saat klik link (jika di handphone)
     document.querySelectorAll(".nav-link, .dropdown-item").forEach(function (link) {
       link.addEventListener("click", function () {
-        if (window.innerWidth < 992) {
-          const bsCollapse = new bootstrap.Collapse(navCollapse, { toggle: false });
+        if (window.innerWidth < 992 && navCollapse.classList.contains("show")) {
           bsCollapse.hide();
         }
       });
     });
   });
 </script>
+
+
 
 <!-- Contoh CSS logo (tambahkan ke file style.css atau dalam <style>) -->
 <style>
