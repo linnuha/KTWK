@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024">
+    <title>Pawartos Lelayu</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Removed stray display: flex; and orphaned CSS block */
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .header-download {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-download a {
+            color: #007bff; /* Warna biru */
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        .header-download a:hover {
+            text-decoration: underline;
+        }
+
+        .header-info a {
+            color: #007bff;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .header-info a i {
+            margin-right: 5px;
+        }
+
+        .header-info a:hover {
+            text-decoration: underline;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            animation: fadeIn 1s ease-in-out;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+    /*styling untuk email dan IG */
+        .top-right-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            text-align: right;
+        }
+
+        .top-right-info a {
+            color: #007bff; /* Warna biru */
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .top-right-info a:hover {
+            text-decoration: underline;
+        }
+         /* Styling untuk header */
+         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .header-info a {
+            color: #007bff; /* Warna biru */
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .header-info a:hover {
+            text-decoration: underline;
+        }
+        body {
+  min-width: 1024px;
+  overflow-x: auto;
+}
+@media (max-width: 1023px) {
+  .container, .row, .col, .col-md-*, .col-sm-* {
+    width: auto !important;
+    max-width: none !important;
+    flex: none !important;
+  }
+
+  .navbar-collapse {
+    display: block !important;
+    height: auto !important;
+  }
+
+  .d-none, .d-sm-none, .d-md-none, .d-lg-none, .d-xl-none {
+    display: block !important;
+  }
+}
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    width: 210mm;
+    height: 297mm;
+    font-size: 12pt;
+  }
+
+  #previewContent {
+    padding: 20mm;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    font-family: "Times New Roman", serif;
+  }
+
+  .modal,
+  .modal-backdrop,
+  header,
+  #loginSection,
+  #mainContent > :not(.modal):not(#previewContent) {
+    display: none !important;
+  }
+
+  #previewContent * {
+    color: black !important;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-end {
+    text-align: right;
+  }
+
+  h1, h2, h3 {
+    margin: 5px 0;
+  }
+}
+</style>
+<style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      position: relative;
+      scroll-padding-top: 70px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .logo {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .nav-link.active {
+      font-weight: bold;
+      border-bottom: 2px solid #fff;
+    }
+    section {
+      padding: 100px 0;
+    }
+    h1, h2, h5 {
+      color: #0d6efd;
+    }
+    .card {
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+    .glass-effect {
+      background-color: rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #000 !important;
+    }
+    .glass-effect .nav-link,
+    .glass-effect .navbar-brand,
+    .glass-effect p {
+      color: #000 !important;
+    }
+  </style>
+  <!-- Animasi dan efek hover -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<style>
+  .hover-shadow:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+</style>
+<style>
+  .galeri-img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .galeri-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+  }
+</style>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" />
+ <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script Tutup Menu Otomatis -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".nav-link:not(.dropdown-toggle), .dropdown-item");
+    const navbarCollapse = document.getElementById("navbarNav");
+
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
+</script>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 glass-effect" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#beranda">
+      <img src="logo.png" class="me-2" alt="Logo" style="height: 40px;"> Karang Taruna Wijaya Kusuma
+    </a>
+    
+    <!-- HAPUS data-bs-toggle dan data-bs-target -->
+    <button id="menuToggle" class="navbar-toggler d-lg-none bg-primary text-white rounded d-flex align-items-center"
+        type="button" aria-label="Toggle navigation">
+  <span id="menuText" class="me-2">Menu</span>
+  <i class="fas fa-bars"></i>
+</button>
+
+    <div class="collapse navbar-collapse" id="mainNavCollapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html#beranda">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#profil">Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#program">Program</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#galeri">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#kontak">Kontak</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navCollapse = document.getElementById("mainNavCollapse");
+    const menuToggle = document.getElementById("menuToggle");
+    const menuText = document.getElementById("menuText");
+    const bsCollapse = new bootstrap.Collapse(navCollapse, { toggle: false });
+
+    // Tombol toggle
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navCollapse.classList.contains("show");
+
+      if (isOpen) {
+        bsCollapse.hide();
+        menuText.textContent = "Menu";
+      } else {
+        bsCollapse.show();
+        menuText.textContent = "Tutup";
+      }
+    });
+
+    // Tutup menu saat klik link (jika di handphone)
+    document.querySelectorAll(".nav-link, .dropdown-item").forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (window.innerWidth < 992 && navCollapse.classList.contains("show")) {
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
+</script>
+</head>
+        <body class="bg-light">
+        <!-- Header -->
+    <div id="mainContent" class="container">
+        <div class="container py-5">
+            <div class="container mb-4"><br><br>
+                <h1 class="text-center mb-4">Pawartos Lelayu</h1>
+                <p class="text-center">Aplikasi untuk membuat surat Pawartos Lelayu secara online</p>
+    <h5>Edit Header Surat</h5>
+    <div class="row g-3 align-items-center">
+        <!-- Upload Logo -->
+        <div class="col-md-4">
+            <label for="logoUpload" class="form-label">Upload Logo</label>
+            <input type="file" id="logoUpload" accept="image/*" class="form-control">
+        </div>
+<script>let uploadedLogoBase64 = null;
+</script>
+<script>
+document.getElementById('logoUpload').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        uploadedLogoBase64 = e.target.result;
+
+        // Ganti logo di header halaman utama
+        const logoPreview = document.getElementById('logoPreview');
+        if (logoPreview) logoPreview.src = uploadedLogoBase64;
+    };
+    reader.readAsDataURL(file);
+});
+</script>
+        <!-- Judul Baris 1 -->
+        <div class="col-md-4">
+            <label for="judulBaris1" class="form-label">Judul Baris 1</label>
+            <input type="text" id="judulBaris1" class="form-control" value="KARANG TARUNA UNIT">
+        </div>
+
+        <!-- Judul Baris 2 -->
+        <div class="col-md-4">
+            <label for="judulBaris2" class="form-label">Judul Baris 2</label>
+            <input type="text" id="judulBaris2" class="form-control" value="RUKUN AGAWE SANTOSA (RAS)">
+        </div>
+
+        <!-- Alamat -->
+        <div class="col-md-12">
+            <label for="alamatLengkap" class="form-label">Alamat Lengkap</label>
+            <textarea id="alamatLengkap" class="form-control" rows="2">Jl. Parangtritis Km 6,5 Ngijo Dk. Demangan Bangunharjo Sewon Bantul</textarea>
+        </div>
+    </div>
+</div>
+<script>
+  // Update preview saat input berubah
+  document.getElementById('judulBaris1').addEventListener('input', function () {
+    document.getElementById('previewJudul1').textContent = this.value;
+  });
+
+  document.getElementById('judulBaris2').addEventListener('input', function () {
+    document.getElementById('previewJudul2').textContent = this.value;
+  });
+
+  document.getElementById('alamatLengkap').addEventListener('input', function () {
+    document.querySelector('.card-header p').textContent = this.value;
+  });
+</script>
+            <div class="card shadow-sm">
+                <div class="card-header text-center" style="border-bottom: 2px solid #000000;">
+    <img id="logoPreview" src="logo.png" alt="Logo Preview" class="img-fluid logo mb-2" style="max-width: 100px; max-height: 100px;">
+    <h2 id="previewJudul1">KARANG TARUNA UNIT</h2>
+    <h1 id="previewJudul2">RUKUN AGAWE SANTOSA (RAS)</h1>
+                    <p class="mb-0">Jl. Parangtritis Km 6,5 Ngijo Dk. Demangan Bangunharjo Sewon Bantul</p>
+                </div>
+                <div class="card-body">
+                    <h2 class="text-center mb-2">PAWARTOS LELAYU</h2>
+
+                    <div class="mb-3">
+                        <strong>Katur Panjenengan:</strong> .............................................
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>Wonten Ing:</strong> ................................................
+                    </div>
+
+                    <p>Assalamu'alaikum Wr. Wb.<br>
+                    Innalillahi Wa Innaillaihi Roji'un<br>
+                    Sampun katimbalan sowan wonten ing Ngarsa Dalem Gusti Allah SWT, inggih punika:</p>
+
+                    <div class="text-center mb-4">
+                        <form class="d-inline">
+                            <input type="text" id="inputAlmarhum" value="......................." class="form-control d-inline text-center" style="width: auto; display: inline;">
+                            <span class="text-muted"><br>(contoh: Almarhum/Almarhumah Bapak/Ibu/Sdr/i......)</br></span>
+                        </form>
+                    </div>
+
+                    <div class="text-center mb-4">
+                        <form class="d-inline">
+                            <label for="inputYuswo" class="form-label me-2">Yuswo:</label>
+                            <input type="text" id="inputYuswo" value="......................." class="form-control d-inline text-center" style="width: auto; display: inline;">
+                            <span class="text-muted"><br>(contoh: 60 Tahun)</br></span>
+                        </form>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="mb-3 d-flex align-items-center">
+                            <strong class="me-2">Pidalem:</strong>
+                            <input type="text" id="inputPidalem" value="Ngijo Demangan RT. 01 Bangunharjo, Sewon, Bantul" class="form-control" style="width: auto;">
+                            <span class="text-muted ms-2">(dapat diubah)</span>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <strong class="me-2">Dinten:</strong>
+                            <input type="text" id="inputDinten" value="Kamis Pahing, 20 November 2025" class="form-control" style="width: auto;">
+                            <span class="text-muted ms-2">(dapat diubah)</span>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <strong class="me-2">Wanci:</strong>
+                            <input type="text" id="inputWanci" value="07.30 WIB" class="form-control" style="width: auto;">
+                            <span class="text-muted ms-2">(dapat diubah)</span>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <strong class="me-2">Wonten Ing:</strong>
+                            <input type="text" id="inputWontenIng" value="Ngijo Demangan RT. 01 Bangunharjo, Sewon, Bantul" class="form-control" style="width: auto;">
+                            <span class="text-muted ms-2">(dapat diubah)</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <p><strong>Jenazah Badhe Kasarekaken:</strong></p>
+                        <div class="mb-3 d-flex align-items-center">
+                            <strong class="me-2">Dinten:</strong>
+                            <input type="text" id="inputDinten2" value="Kamis Pahing, 20 November 2025" class="form-control" style="width: auto;">
+                            <span class="text-muted ms-2">(dapat diubah)</span>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <strong class="me-2">Wanci:</strong>
+                            <input type="text" id="inputWanci2" value="16.00 WIB" class="form-control" style="width: auto;">
+                            <span class="text-muted ms-2">(dapat diubah)</span>
+                        </div>
+                        <div class="mb-3 d-flex align-items-center">
+                            <strong class="me-2">Wonten Ing:</strong>
+                            <input type="text" id="inputWontenIng2" value="Makam Ngijo Sisih Lor" class="form-control" style="width: auto;">
+                            <span class="text-muted ms-2">(dapat diubah)</span>
+                        </div>
+                    </div>
+
+                    <p>
+  Awit saking meniko dumateng para Bapak/Ibu/Saudara mbok bilih mboten wonten alangan satunggal punopo,
+  kasuwun rawuhipun saperlu paring Do'a soho derek belo sungkowo soho paring pangumatan ingkang pungkasan dumateng
+  <input type="text" id="inputAlmarhumKalimat" value="Almarhum" class="form-control d-inline text-center" style="width: auto; display: inline;">
+  <span class="text-muted">(dapat diubah)</span>. Awit Saking kawigatosanipun, sedoyo kaluarga namung saget ngaturaken agunging panuwun.
+</p>
+
+                    <p>Wassalamu'alaikum Wr. Wb.</p>
+                </div>
+                <div class="card-footer text-center">
+                     <p><strong>Ahli Waris:</strong></p>
+                    <div class="row justify-content-center" id="ahliWarisContainer">
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" placeholder="Nama Ahli Waris" id="inputWaris1">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" placeholder="(Suami/Istri/Menantu-Anak)" id="inputHubungan1">
+                        </div>
+                    </div>
+                    <div class="text-center mt-3" id="addRemoveButtons">
+                        <button class="btn btn-info btn-sm" onclick="addColumn()">Tambah Kolom</button>
+                        <button class="btn btn-primary btn-sm" onclick="showPreviewPopup()">Preview</button>
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn()">Hapus Kolom</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Preview -->
+    <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="previewModalLabel">Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="previewContent">
+                    <div class="text-start">
+                        <img src="logo.png" alt="Logo" style="width: 80px; height: 80px; margin-bottom: 10px; position: absolute; top: 10px; left: 10px;">
+                    </div>
+                    <div class="text-center">
+                        <h2>KARANG TARUNA UNIT</h2>
+                        <h1>RUKUN AGAWE SANTOSA (RAS)</h1>
+                        <p>Jl. Parangtritis Km 6,5 Ngijo Dk. Demangan Bangunharjo Sewon Bantul</p>
+                        <hr>
+                        <h2>PAWARTOS LELAYU</h2>
+                    </div>
+                    <!-- Preview content will be dynamically inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                    <button type="button" class="btn btn-success" onclick="printPage()">Print</button>
+                    <button type="button" class="btn btn-primary" onclick="exportPdf()">Ekspor ke PDF</button>
+                    <button type="button" class="btn btn-warning" onclick="exportJpg()">Ekspor ke JPG</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script>
+                function addColumn() {
+            const row = document.getElementById('ahliWarisContainer');
+            const newColumn = document.createElement('div');
+            newColumn.className = 'col-md-3';
+            newColumn.innerHTML = `<input type="text" class="form-control" placeholder="Nama Ahli Waris" id="inputWaris${row.children.length + 1}">`;
+            const newHubungan = document.createElement('div');
+            newHubungan.className = 'col-md-3';
+            newHubungan.innerHTML = `<input type="text" class="form-control" placeholder="Hubungan" id="inputHubungan${row.children.length + 1}">`;
+            row.appendChild(newColumn);
+            row.appendChild(newHubungan);
+        }
+
+        function removeColumn() {
+            const row = document.getElementById('ahliWarisContainer');
+            if (row.children.length > 2) {
+                row.removeChild(row.lastElementChild); // Remove Hubungan column
+                row.removeChild(row.lastElementChild); // Remove Nama Ahli Waris column
+            }
+        }
+
+        function exportJpg() {
+            const element = document.getElementById("previewContent");
+            html2canvas(element, { scale: 2 }).then((canvas) => {
+                canvas.toBlob((blob) => {
+                    const filename = "preview-content.jpg";
+                    saveAs(blob, filename);
+                }, "image/jpeg", 1);
+            }).catch((error) => {
+                console.error("Error generating JPG:", error);
+                alert("Terjadi kesalahan saat membuat JPG. Periksa log konsol untuk detail lebih lanjut.");
+            });
+        }
+
+        function showPreviewPopup() {
+            const judulBaris1 = document.getElementById("judulBaris1").value;
+const judulBaris2 = document.getElementById("judulBaris2").value;
+const alamatLengkap = document.getElementById("alamatLengkap").value;
+    const almarhum = document.getElementById("inputAlmarhum").value;
+    const yuswo = document.getElementById("inputYuswo").value;
+    const pidalem = document.getElementById("inputPidalem").value;
+    const dinten = document.getElementById("inputDinten").value;
+    const wanci = document.getElementById("inputWanci").value;
+    const dinten2 = document.getElementById("inputDinten2").value;
+    const wanci2 = document.getElementById("inputWanci2").value;
+    const wonten = document.getElementById("inputWontenIng").value;
+    const wontenIng2 = document.getElementById("inputWontenIng2").value;
+    const almarhumKalimat = document.getElementById("inputAlmarhumKalimat").value;
+            
+     // Cek apakah logo tersedia
+let showLogo = uploadedLogoBase64 && uploadedLogoBase64.trim() !== "";
+
+// Logo HTML (di atas teks)
+let logoHTML = showLogo
+  ? `<div class="mb-2 text-center"><img src="${uploadedLogoBase64}" alt="Logo" style="width: 100px; height: 100px; object-fit: contain;"></div>`
+  : "";
+
+// Konten header (logo di atas teks)
+let content = `
+  <div class="card-header text-center" style="border-bottom: 2px solid #000;">
+    ${logoHTML}
+    <div id="headerTextContainer">
+        <h2 style="font-size: 20px;" id="previewJudul1">${judulBaris1}</h2>
+        <h1 style="font-size: 35px;" id="previewJudul2">${judulBaris2}</h1>
+        <p class="mb-0" id="previewAlamat">${alamatLengkap}</p>
+    </div>
+        </div>
+        <h2><center>PAWARTOS LELAYU</center></h2>
+        <div style="line-height: 1.5;">
+            <p class="text-end mb-0" style="line-height: 1.5;">Katur Panjenengan: .............................................</p>
+            <p class="text-end mb-0" style="line-height: 1.5;">Wonten Ing: ................................................</p>
+            <p>Assalamu'alaikum Wr. Wb.</p>
+            <p style="text-indent: 40px;">Innalillahi Wa Innaillaihi Roji'un</p>
+            <p>Sampun katimbalan sowan wonten ing Ngarsa Dalem Gusti Allah SWT, inggih punika:</p>
+            <p><center><strong></strong> ${almarhum}</center></p>
+            <p><center><strong>Yuswo:</strong> ${yuswo}</center></p>
+            <p><strong>Pidalem:</strong> ${pidalem}</p>
+            <p><strong>Dinten:</strong> ${dinten}</p>
+            <p><strong>Wanci:</strong> ${wanci}</p>
+            <p><strong>Wonten Ing:</strong> ${wonten}</p>
+            <p style="text-indent: 40px;"><strong>Jenazah Badhe Kasarekaken:</strong></p>
+            <p><strong>Dinten:</strong> ${dinten2}</p>
+            <p><strong>Wanci:</strong> ${wanci2}</p>
+            <p><strong>Wonten Ing:</strong> ${wontenIng2}</p>
+            <p style="text-indent: 40px; line-height: 1.8;">Awit saking meniko dumateng para Bapak/Ibu/Saudara mbok bilih mboten
+wonten alangan satunggal punopo, kasuwun rawuhipun saperlu paring Do'a soho derek belo sungkowo soho
+paring pangumatan ingkang pungkasan dumateng ${almarhumKalimat}. Awit Saking kawigatosanipun, sedoyo kaluarga namung 
+saget ngaturaken agunging panuwun.</p>
+
+            <p>Wassalamu'alaikum Wr. Wb.</p>
+        </div>
+    `;
+const ahliWarisContainer = document.getElementById("ahliWarisContainer");
+    content += `<p class="text-center" style="line-height: 0.8; margin-bottom: 10px;"><strong>Ahli Waris:</strong></p>`;
+
+    let ahliWarisList = [];
+    for (let i = 0; i < ahliWarisContainer.children.length; i += 2) {
+        const namaWaris = ahliWarisContainer.children[i].querySelector("input").value;
+        const hubunganWaris = ahliWarisContainer.children[i + 1].querySelector("input").value;
+        ahliWarisList.push(`${namaWaris} (${hubunganWaris})`);
+    }
+
+    // Membuat tata letak dua kolom yang lebih berdekatan
+    content += `
+        <div class="d-flex justify-content-center">
+            <div class="d-flex" style="width: 50%; justify-content: space-evenly; gap: 20px;">
+                <!-- Kolom kiri -->
+                <div style="width: 45%; text-align: left;">
+    `;
+
+    const midIndex = Math.ceil(ahliWarisList.length / 2);
+
+    // Konten kolom kiri
+    for (let i = 0; i < midIndex; i++) {
+        content += `<p style="line-height: 1.5;">${ahliWarisList[i]}</p>`;
+    }
+
+    content += `
+                </div>
+                <!-- Kolom kanan -->
+                <div style="width: 45%; text-align: left;">
+    `;
+
+    // Konten kolom kanan
+    for (let i = midIndex; i < ahliWarisList.length; i++) {
+        content += `<p style="line-height: 1.5;">${ahliWarisList[i]}</p>`;
+    }
+
+    content += `
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.getElementById("previewContent").innerHTML = content;
+    const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
+    previewModal.show();
+}
+
+        function exportPdf() {
+            const { jsPDF } = window.jspdf;
+            const element = document.getElementById("previewContent");
+
+            html2canvas(element, { scale: 2, useCORS: true }).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const pdf = new jsPDF({ unit: "mm", format: "a4" });
+                const imgWidth = 210; // Lebar halaman A4 dalam mm
+                const pageHeight = 297; // Tinggi halaman A4 dalam mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                // Tambahkan halaman pertama
+                pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+
+                // Tambahkan halaman berikutnya jika konten melebihi tinggi satu halaman
+                while (heightLeft > 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+
+                // Simpan PDF
+                pdf.save("pawartos-lelayu.pdf");
+            }).catch((error) => {
+                console.error("Error generating PDF:", error);
+                alert("Terjadi kesalahan saat membuat PDF. Periksa log konsol untuk detail lebih lanjut.");
+            });
+        }
+        function printPage() {
+  const originalContent = document.body.innerHTML;
+  const previewContent = document.getElementById("previewContent").innerHTML;
+
+  document.body.innerHTML = `<div id="previewContent">${previewContent}</div>`;
+  window.print();
+  document.body.innerHTML = originalContent;
+  location.reload(); // Kembali ke form setelah cetak
+}
+    </script>
+</body>
+</html>

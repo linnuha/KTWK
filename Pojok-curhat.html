@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pojok Curhat Karang Taruna</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; background: #f8f9fa; }
+    .form-container { display: flex; flex-direction: column; height: 100%; }
+    .form-content { flex: 1; overflow-y: auto; padding: 2rem; }
+    .form-section {
+      background: white; border-radius: 12px; padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 2rem;
+    }
+    .navigation-buttons {
+      display: flex; justify-content: space-between;
+      padding: 1rem 2rem; background: #fff; border-top: 1px solid #dee2e6;
+    }
+    .submit-button-container {
+      display: none; justify-content: flex-end;
+      padding: 1rem 2rem; background: #fff; border-top: 1px solid #dee2e6;
+    }
+  </style>
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 glass-effect" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <img src="logo.png" class="me-2" alt="Logo" style="height: 70px;"> Karang Taruna Wijaya Kusuma
+    </a>
+    
+    <!-- HAPUS data-bs-toggle dan data-bs-target -->
+    <button id="menuToggle" class="navbar-toggler d-lg-none bg-primary text-white rounded d-flex align-items-center"
+        type="button" aria-label="Toggle navigation">
+  <span id="menuText" class="me-2">Menu</span>
+  <i class="fas fa-bars"></i>
+</button>
+
+    <div class="collapse navbar-collapse" id="mainNavCollapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html#beranda">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#profil">Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#program">Program</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#galeri">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#kontak">Kontak</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navCollapse = document.getElementById("mainNavCollapse");
+    const menuToggle = document.getElementById("menuToggle");
+    const menuText = document.getElementById("menuText");
+    const bsCollapse = new bootstrap.Collapse(navCollapse, { toggle: false });
+
+    // Tombol toggle
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navCollapse.classList.contains("show");
+
+      if (isOpen) {
+        bsCollapse.hide();
+        menuText.textContent = "Menu";
+      } else {
+        bsCollapse.show();
+        menuText.textContent = "Tutup";
+      }
+    });
+
+    // Tutup menu saat klik link (jika di handphone)
+    document.querySelectorAll(".nav-link, .dropdown-item").forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (window.innerWidth < 992 && navCollapse.classList.contains("show")) {
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
+</script>
+
+<!-- Contoh CSS logo (tambahkan ke file style.css atau dalam <style>) -->
+<style>
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+</style>
+</head>
+<body>
+<div class="form-container">
+  <div class="form-content container">
+    <h2 class="text-center mb-4 fw-bold"><br><br>📝 Pojok Curhat Karang Taruna</h2>
+
+    <div id="formAlert" class="alert alert-success d-none" role="alert">
+      ✅ Data berhasil dikirim yaa sobs!
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <form id="karangTarunaForm">
+      <!-- 🔽 Tempatkan isi bagian A–H form di sini (seperti sebelumnya) -->
+      <div class="form-section">
+        <h5>🧑 A. Identitas Pengisi</h5>
+        <div class="mb-3">
+          <label class="form-label">Nama Lengkap</label>
+          <input type="text" class="form-control" name="nama" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Umur</label>
+          <input type="number" class="form-control" name="umur" required placeholder="25">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Alamat Padukuhan</label>
+          <input type="text" class="form-control" name="alamat_padukuhan" required placeholder="Ngijo Demangan RT 06">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Jenis Kelamin</label>
+          <select class="form-select" name="jk" required>
+            <option disabled selected value="">-- Pilih Jenis Kelamin --</option>
+            <option>Laki-laki</option>
+            <option>Perempuan</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Jabatan</label>
+          <select class="form-select" name="jabatan" required>
+            <option disabled selected value="">-- Pilih Jabatan --</option>
+            <option>Ketua</option><option>Sekretaris</option><option>Bendahara</option><option>Anggota</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Kontak</label>
+          <input type="tel" class="form-control" name="kontak" required placeholder="08123456789">
+        </div>
+      </div>
+      <!-- ⬅️ Tambahkan bagian B sampai H sesuai struktur sebelumnya -->
+       <div class="form-section">
+      <h5>📂 B. Kategori Masalah Umum</h5>
+      <div class="mb-3">
+        <div class="row row-cols-1 row-cols-md-2 g-2">
+          <!-- masalah umum -->
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Kurangnya partisipasi anggota">
+              <label class="form-check-label">Kurangnya partisipasi anggota</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Keterbatasan dana atau pendanaan kegiatan">
+              <label class="form-check-label">Keterbatasan dana</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Tidak adanya program kerja yang jelas">
+              <label class="form-check-label">Tidak ada program kerja</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Fasilitas kegiatan tidak memadai">
+              <label class="form-check-label">Fasilitas tidak memadai</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Kurangnya pelatihan atau peningkatan kapasitas">
+              <label class="form-check-label">Kurangnya pelatihan</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Minimnya dukungan dari pihak desa/kelurahan">
+              <label class="form-check-label">Minimnya dukungan desa</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Konflik internal antar anggota">
+              <label class="form-check-label">Konflik internal</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Kurangnya komunikasi dan koordinasi">
+              <label class="form-check-label">Kurangnya komunikasi</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="masalah[]" value="Kegiatan tidak berkelanjutan">
+              <label class="form-check-label">Kegiatan tidak berkelanjutan</label>
+            </div>
+          </div>
+        </div>
+        <input type="text" class="form-control mt-3" name="masalah_lain" placeholder="Lainnya (sebutkan)">
+      </div>
+    </div>
+<script>
+  // Tambahkan id dan for secara otomatis jika belum ada
+  document.querySelectorAll('.form-check-input').forEach((input, index) => {
+    const label = input.nextElementSibling;
+    if (label && label.tagName === 'LABEL') {
+      const id = input.name.replace(/\[\]/g, '') + '-' + index;
+      input.id = id;
+      label.setAttribute('for', id);
+    }
+  });
+</script>
+
+    <!-- Bagian C-H dibungkus form-section dan distandarisasi -->
+    <div class="form-section">
+      <h5>📖 C. Uraian Masalah</h5>
+      <textarea class="form-control" name="uraian" rows="4" required placeholder="Jelaskan secara rinci masalah yang dihadapi..."></textarea>
+    </div>
+
+    <div class="form-section">
+      <h5>🚨 D. Skala Urgensi Masalah</h5>
+      <select class="form-select" name="urgensi" required>
+        <option disabled selected value="">-- Pilih Tingkat Urgensi --</option>
+        <option value="1">1 - Tidak Mendesak</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 - Sangat Mendesak</option>
+      </select>
+    </div>
+
+    <div class="form-section">
+      <h5>🌟 E. Usulan Solusi / Harapan</h5>
+      <textarea class="form-control" name="solusi" rows="3" required placeholder="Tuliskan solusi atau harapan Anda..."></textarea>
+    </div>
+
+    <div class="form-section">
+      <h5>🏢 F. Permasalahan Organisasi</h5>
+      <div class="mb-3">
+        <label class="form-label">1. Apakah struktur organisasi Karang Taruna sudah terbentuk lengkap?</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="struktur_organisasi" value="Ya" required>
+          <label class="form-check-label">Ya</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="struktur_organisasi" value="Tidak">
+          <label class="form-check-label">Tidak</label>
+        </div>
+        <textarea class="form-control mt-2" name="hambatan_struktur" placeholder="Jika tidak, apa hambatannya?"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">2. Apakah anggota Karang Taruna aktif dalam kegiatan?</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="anggota_aktif" value="Ya" required>
+          <label class="form-check-label">Ya</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="anggota_aktif" value="Tidak">
+          <label class="form-check-label">Tidak</label>
+        </div>
+        <textarea class="form-control mt-2" name="penyebab_tidak_aktif" placeholder="Jika tidak, apa penyebabnya?"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">3. Apakah terdapat kesulitan koordinasi antar anggota/pengurus?</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="koordinasi_sulit" value="Ya" required>
+          <label class="form-check-label">Ya</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="koordinasi_sulit" value="Tidak">
+          <label class="form-check-label">Tidak</label>
+        </div>
+        <textarea class="form-control mt-2" name="penyebab_koordinasi" placeholder="Jika ya, jelaskan..."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h5>📅 G. Permasalahan Program Kerja</h5>
+      <div class="mb-3">
+        <label class="form-label">1. Apakah memiliki program kerja tahunan?</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="punya_program_kerja" value="Ya" required>
+          <label class="form-check-label">Ya</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="punya_program_kerja" value="Tidak">
+          <label class="form-check-label">Tidak</label>
+        </div>
+        <textarea class="form-control mt-2" name="alasan_tidak_program" placeholder="Jika tidak, kenapa?"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">2. Kegiatan yang tidak berjalan dengan baik:</label>
+        <textarea class="form-control" name="kegiatan_tidak_jalan" rows="2"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">3. Hambatan utama dalam pelaksanaan kegiatan:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="hambatan_kegiatan[]" value="Dana">
+          <label class="form-check-label">Dana</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="hambatan_kegiatan[]" value="SDM">
+          <label class="form-check-label">SDM</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="hambatan_kegiatan[]" value="Partisipasi masyarakat">
+          <label class="form-check-label">Partisipasi masyarakat</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="hambatan_kegiatan[]" value="Fasilitas">
+          <label class="form-check-label">Fasilitas/sarana prasarana</label>
+        </div>
+        <input type="text" class="form-control mt-2" name="hambatan_lain" placeholder="Lainnya (sebutkan)">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h5>🌍 H. Permasalahan Sosial di Masyarakat</h5>
+      <div class="mb-3">
+        <label class="form-label">1. Masalah kepemudaan yang sering terjadi:</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="masalah_pemuda[]" value="Pengangguran">
+          <label class="form-check-label">Pengangguran</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="masalah_pemuda[]" value="Narkoba">
+          <label class="form-check-label">Narkoba</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="masalah_pemuda[]" value="Kenakalan remaja">
+          <label class="form-check-label">Kenakalan remaja</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="masalah_pemuda[]" value="Putus sekolah">
+          <label class="form-check-label">Putus sekolah</label>
+        </div>
+        <input type="text" class="form-control mt-2" name="masalah_pemuda_lain" placeholder="Lainnya (sebutkan)">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">2. Masalah sosial lainnya di lingkungan:</label>
+        <textarea class="form-control" name="masalah_sosial_lain" rows="2"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">3. Upaya yang sudah dilakukan Karang Taruna:</label>
+        <textarea class="form-control" name="upaya_karangtaruna" rows="2"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">4. Apa yang dibutuhkan untuk mengatasi masalah tersebut?</label>
+        <textarea class="form-control" name="kebutuhan_karangtaruna" rows="2"></textarea>
+      </div>
+    </div>
+    </form>
+  </div>
+
+  <div class="navigation-buttons">
+    <button type="button" class="btn btn-outline-secondary" onclick="navigate(-1)">⬅️ Sebelumnya</button>
+    <button type="button" class="btn btn-outline-primary" onclick="navigate(1)">Selanjutnya ➡️</button>
+  </div>
+
+  <div class="submit-button-container" id="submitButtonContainer">
+    <button type="button" class="btn btn-primary" onclick="previewJawaban()">👁️ Preview & Kirim</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Auto-label checkbox/radio
+  document.querySelectorAll('.form-check-input').forEach((input, index) => {
+    const label = input.nextElementSibling;
+    if (label && label.tagName === 'LABEL') {
+      const id = input.name.replace(/\[\]/g, '') + '-' + index;
+      input.id = id;
+      label.setAttribute('for', id);
+    }
+  });
+
+  const sections = document.querySelectorAll('.form-section');
+  const submitButtonContainer = document.getElementById('submitButtonContainer');
+  let currentSection = 0;
+
+  function showSection(index) {
+    sections.forEach((section, i) => {
+      section.style.display = i === index ? 'block' : 'none';
+    });
+    submitButtonContainer.style.display = index === sections.length - 1 ? 'flex' : 'none';
+  }
+
+  function navigate(direction) {
+    if (direction === -1 && currentSection > 0) currentSection--;
+    else if (direction === 1 && currentSection < sections.length - 1) currentSection++;
+    showSection(currentSection);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  showSection(currentSection);
+
+  // Preview & Kirim
+  function previewJawaban() {
+    const form = document.getElementById("karangTarunaForm");
+    const data = new FormData(form);
+    const entries = [...data.entries()];
+    let output = '<h5>📋 Preview Isian</h5><ul class="list-group mb-4">';
+    entries.forEach(([key, value]) => {
+      output += `<li class="list-group-item"><strong>${key}:</strong> ${value}</li>`;
+    });
+    output += '</ul><div class="d-flex justify-content-end gap-2">';
+    output += '<button onclick="window.close()" class="btn btn-secondary">Batal</button>';
+    output += '<button class="btn btn-primary" onclick="submitAndClose()">Kirim</button></div>';
+
+    const previewWindow = window.open("", "Preview", "width=800,height=600");
+    previewWindow.document.write(`
+      <html><head><title>Preview</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      </head>
+      <body class="p-3">${output}
+        <script>
+          function submitAndClose() {
+            const form = opener.document.getElementById("karangTarunaForm");
+            const formData = new FormData(form);
+            fetch("https://script.google.com/macros/s/AKfycbw7dARADSHUwgJnksuBLyjP5sLFg6NPova9BSpym9pV3WQfQI4I7VZira8qEkjcEn3u/exec", {
+              method: "POST",
+              body: formData
+            })
+            .then(res => {
+              if (res.ok) {
+                opener.postMessage("formSubmitted", "*");
+              } else {
+                alert("❌ Gagal mengirim data.");
+              }
+              window.close();
+            })
+            .catch(err => {
+              alert("❌ Error: " + err.message);
+              window.close();
+            });
+          }
+        <\/script>
+      </body></html>
+    `);
+    previewWindow.document.close();
+  }
+
+  // Menerima pesan sukses dari pop-up
+  window.addEventListener("message", (event) => {
+    if (event.data === "formSubmitted") {
+      document.getElementById("formAlert").classList.remove("d-none");
+      document.getElementById("karangTarunaForm").reset();
+      currentSection = 0;
+      showSection(currentSection);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Program Turnamen</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      scroll-padding-top: 70px;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    h1, h2, h4 {
+      color: #0d6efd;
+    }
+    .card {
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .glass-effect {
+      background-color: rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #000 !important;
+    }
+    .glass-effect .nav-link,
+    .glass-effect .navbar-brand,
+    .glass-effect p {
+      color: #000 !important;
+    }
+    .nav-link.active {
+      font-weight: bold;
+      border-bottom: 2px solid #fff;
+    }
+    .logo {
+      height: 40px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70" tabindex="0">
+ <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 glass-effect" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#beranda">
+      <img src="logo.png" class="me-2" alt="Logo" style="height: 40px;"> Karang Taruna
+    </a>
+    
+    <!-- HAPUS data-bs-toggle dan data-bs-target -->
+    <button id="menuToggle" class="navbar-toggler d-lg-none bg-primary text-white rounded d-flex align-items-center"
+        type="button" aria-label="Toggle navigation">
+  <span id="menuText" class="me-2">Menu</span>
+  <i class="fas fa-bars"></i>
+</button>
+
+    <div class="collapse navbar-collapse" id="mainNavCollapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html#beranda">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#profil">Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#program">Program</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#galeri">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navCollapse = document.getElementById("mainNavCollapse");
+    const menuToggle = document.getElementById("menuToggle");
+    const menuText = document.getElementById("menuText");
+    const bsCollapse = new bootstrap.Collapse(navCollapse, { toggle: false });
+
+    // Tombol toggle
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navCollapse.classList.contains("show");
+
+      if (isOpen) {
+        bsCollapse.hide();
+        menuText.textContent = "Menu";
+      } else {
+        bsCollapse.show();
+        menuText.textContent = "Tutup";
+      }
+    });
+
+    // Tutup menu saat klik link (jika di handphone)
+    document.querySelectorAll(".nav-link, .dropdown-item").forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (window.innerWidth < 992 && navCollapse.classList.contains("show")) {
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
+</script>
+  <!-- Konten -->
+  <div class="container py-5 mt-5">
+    <h1 class="mb-4">Program Turnamen</h1>
+    <img src="assets/voli.jpg" class="img-fluid rounded mb-4 shadow-sm" alt="Turnamen">
+    <p class="text-muted">Turnamen olahraga yang diselenggarakan Karang Taruna menjadi ajang mempererat silaturahmi antar RT serta menumbuhkan semangat sportivitas dan kerjasama. Jenis olahraga yang dilombakan antara lain sepak bola, voli, dan bulutangkis.</p>
+
+    <h4 class="mt-5">Cabang Olahraga</h4>
+    <ul>
+      <li>Sepak Bola</li>
+      <li>Bola Voli</li>
+      <li>Bulutangkis</li>
+    </ul>
+
+    <h4 class="mt-4">Jadwal Kegiatan</h4>
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr><th>Hari</th><th>Olahraga</th><th>Lokasi</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sabtu</td><td>Sepak Bola</td><td>Lapangan RW 02</td></tr>
+        <tr><td>Minggu</td><td>Voli & Bulutangkis</td><td>GOR Desa</td></tr>
+      </tbody>
+    </table>
+
+    <a href="index.html#program" class="btn btn-primary mt-3">&larr; Kembali ke Program</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-white text-center py-4 glass-effect mt-5">
+    <p class="mb-0">&copy; 2025 Karang Taruna. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
