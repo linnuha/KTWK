@@ -53,6 +53,50 @@
       color: #000 !important;
     }
   </style>
+  <style>
+    .preview-card {
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+    }
+
+    .preview-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .preview-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .text-overlay {
+      z-index: 2;
+    }
+
+    .overlay-box {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      color: #000;
+    }
+
+    .arrow-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    @media (max-width: 576px) {
+      .arrow-btn {
+        display: none;
+      }
+    }
+  </style>
   <!-- Animasi dan efek hover -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <style>
@@ -74,7 +118,12 @@
     z-index: 2;
   }
 </style>
+<!-- Bootstrap CSS dan JS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- FontAwesome (untuk ikon x) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <!-- Lightbox CSS -->
@@ -166,7 +215,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 glass-effect" id="mainNav">
   <div class="container">
     <a class="navbar-brand fw-bold" href="index.html">
-      <img src="logo.png" class="me-2" alt="Logo" style="height: 70px;"> Karang Taruna Wijaya Kusuma
+      <img src="logo.webp" class="me-2" alt="Logo" style="height: 40px;"> Karang Taruna Wijaya Kusuma
     </a>
     
     <!-- HAPUS data-bs-toggle dan data-bs-target -->
@@ -552,7 +601,7 @@ inputMessage.onkeydown = (e) => {
  <section id="beranda" class="position-relative text-white d-flex align-items-center justify-content-center text-center" style="min-height: 100vh; overflow: hidden;">
       <!-- Background Gambar -->
   <div class="position-absolute top-0 start-0 w-100 h-100" style="
-    background-image: url('https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg');
+    background-image: url('https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
     background-position: center;
     z-index: 1;"></div>
@@ -565,7 +614,7 @@ inputMessage.onkeydown = (e) => {
 
   <!-- Konten -->
 <div class="container px-4" style="z-index: 3; animation: fadeInUp 1.2s ease;">
-  <h1 class="display-4 fw-bold mb-3">Selamat Datang di Karang Taruna Wijaya Kusuma</h1>
+  <h1 class="display-4 fw-bold mb-3">Salam Adhitya Karya Mahatva Yodha</h1>
   <p class="lead mb-4" id="typedText"></p>
 
   <!-- Tombol + Ikon Sosial -->
@@ -637,7 +686,7 @@ inputMessage.onkeydown = (e) => {
           data-jabatan="Ketua"
           data-foto="assets/juwari.jpg"
           data-deskripsi="Memimpin dan mengoordinasikan seluruh kegiatan organisasi.">
-          <img src="assets/juwari.jpg" class="card-img-top rounded-circle mx-auto mt-3"
+          <img src="assets/juwari.webp" class="card-img-top rounded-circle mx-auto mt-3"
                style="width:150px;height:150px;object-fit:cover;" alt="Ketua">
           <div class="card-body">
             <h5 class="card-title mb-1">Juwari</h5>
@@ -651,7 +700,7 @@ inputMessage.onkeydown = (e) => {
           data-jabatan="Wakil Ketua I"
           data-foto="assets/nopek.png"
           data-deskripsi="Membantu Ketua dalam pelaksanaan tugas.">
-          <img src="assets/nopek.png" class="card-img-top rounded-circle mx-auto mt-3"
+          <img src="assets/nopek.webp" class="card-img-top rounded-circle mx-auto mt-3"
                style="width:150px;height:150px;object-fit:cover;" alt="Wakil Ketua I">
           <div class="card-body">
             <h5 class="card-title mb-1">Nopek</h5>
@@ -816,21 +865,21 @@ inputMessage.onkeydown = (e) => {
     <h2 class="text-center text-muted mb-5" data-aos="fade-down">Program Kegiatan</h2>
 
     <!-- Tombol Panah Kiri -->
-    <button id="scrollLeft" class="arrow-btn position-absolute top-50 start-0 translate-middle-y z-3">
+    <button id="scrollLeft" class="arrow-btn btn btn-light shadow rounded-circle position-absolute top-50 start-0 translate-middle-y z-3">
       &larr;
     </button>
 
     <!-- Tombol Panah Kanan -->
-    <button id="scrollRight" class="arrow-btn position-absolute top-50 end-0 translate-middle-y z-3">
+    <button id="scrollRight" class="arrow-btn btn btn-light shadow rounded-circle position-absolute top-50 end-0 translate-middle-y z-3">
       &rarr;
     </button>
 
     <!-- Kontainer Scroll Horizontal -->
-    <div id="programContainer" class="d-flex overflow-auto gap-4 px-2" style="scroll-behavior: smooth;">
+    <div id="programContainer" class="d-flex overflow-auto gap-4 px-2" style="scroll-behavior: smooth;" data-aos="fade-up">
       
       <!-- Card 1 -->
-      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;">
-        <img src="assets/kerja-bakti.jpg" alt="Kerja Bakti" class="img-fluid preview-img">
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/kerja-bakti.webp" alt="Kerja Bakti" class="img-fluid preview-img">
         <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
           <div class="overlay-box p-3 rounded-3 shadow-sm">
             <h5 class="fw-bold mb-2">Kerja Bakti</h5>
@@ -841,8 +890,8 @@ inputMessage.onkeydown = (e) => {
       </div>
 
       <!-- Card 2 -->
-      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;">
-        <img src="assets/pelatihan.jpg" alt="Pelatihan" class="img-fluid preview-img">
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="200">
+        <img src="assets/pelatihan.webp" alt="Pelatihan" class="img-fluid preview-img">
         <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
           <div class="overlay-box p-3 rounded-3 shadow-sm">
             <h5 class="fw-bold mb-2">Pelatihan</h5>
@@ -853,8 +902,8 @@ inputMessage.onkeydown = (e) => {
       </div>
 
       <!-- Card 3 -->
-      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;">
-        <img src="assets/voli.jpg" alt="Turnamen" class="img-fluid preview-img">
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="300">
+        <img src="assets/voli.webp" alt="Turnamen" class="img-fluid preview-img">
         <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
           <div class="overlay-box p-3 rounded-3 shadow-sm">
             <h5 class="fw-bold mb-2">Turnamen</h5>
@@ -863,44 +912,57 @@ inputMessage.onkeydown = (e) => {
           </div>
         </div>
       </div>
-<!-- Card 4 -->
-      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;">
-        <img src="assets/pojok.png" alt="Curhat" class="img-fluid preview-img">
+
+      <!-- Card 4 -->
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="400">
+        <img src="assets/pojok.webp" alt="Curhat" class="img-fluid preview-img">
         <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
           <div class="overlay-box p-3 rounded-3 shadow-sm">
-            <h5 class="fw-bold mb-2">Pojok Curhat Karang Taruna</h5>
-            <p class="small mb-3">Form pendataan terpadu untuk menata potensi dan kekuatan dari anak muda</p>
+            <h5 class="fw-bold mb-2">Pojok Curhat</h5>
+            <p class="small mb-3">Pendataan untuk menata potensi dan kekuatan dari anak muda.</p>
             <a href="Pojok-curhat.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
           </div>
         </div>
       </div>
+
       <!-- Card 5 -->
-      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;">
-        <img src="assets/QR.png" alt="QR" class="img-fluid preview-img">
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="500">
+        <img src="assets/QR.webp" alt="QR" class="img-fluid preview-img">
         <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
           <div class="overlay-box p-3 rounded-3 shadow-sm">
-            <h5 class="fw-bold mb-2">QR Generate Terpadu</h5>
-            <p class="small mb-3">Bentuk dari komunikasi kekinian dengan menerapkan penyandian dalam bentuk gambar</p>
+            <h5 class="fw-bold mb-2">QR Generate</h5>
+            <p class="small mb-3">Komunikasi kekinian dalam bentuk gambar terenkripsi.</p>
             <a href="QRGenerate.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
           </div>
         </div>
       </div>
+
       <!-- Card 6 -->
-      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;">
-        <img src="assets/pawartos.png" alt="Pawartos" class="img-fluid preview-img">
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="600">
+        <img src="assets/pawartos.webp" alt="Pawartos" class="img-fluid preview-img">
         <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
           <div class="overlay-box p-3 rounded-3 shadow-sm">
             <h5 class="fw-bold mb-2">Pawartos Lelayu</h5>
-            <p class="small mb-3">Pembuatan berita kematian dengan metode online langsung pakai, cukup masukkan data langsung jadi siap dishare</p>
+            <p class="small mb-3">Berita kematian online otomatis</p>
             <a href="Pawartos-lelayu.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+
+<!-- Script Bootstrap & AOS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
-  // Geser horizontal
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+
+  // Scroll Button Logic
   const programContainer = document.getElementById('programContainer');
   const scrollAmount = 320;
 
@@ -912,7 +974,7 @@ inputMessage.onkeydown = (e) => {
     programContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   });
 
-  // Efek Tilt Hover
+  // Tilt Hover Effect
   const cards = document.querySelectorAll('.preview-card');
 
   cards.forEach(card => {
@@ -922,19 +984,11 @@ inputMessage.onkeydown = (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = -(y - centerY) / 15; // kebalik untuk efek alami
-      const rotateY = (x - centerX) / 15;
+      const rotateX = -(y - rect.height / 2) / 15;
+      const rotateY = (x - rect.width / 2) / 15;
 
       card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-      // overlay tetap ikut sedikit (opsional)
-      const moveX = (x - centerX) / 20;
-      const moveY = (y - centerY) / 20;
-      overlay.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      overlay.style.transform = `translate(${rotateY}px, ${rotateX}px)`;
     });
 
     card.addEventListener('mouseleave', () => {
@@ -943,81 +997,78 @@ inputMessage.onkeydown = (e) => {
     });
   });
 </script>
-
-<style>
-  .preview-card {
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .preview-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
-  }
-
-  .preview-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .text-overlay {
-    z-index: 2;
-  }
-
-  .overlay-box {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(8px);
-    color: #000;
-  }
-</style>
 <!-- Galeri -->
 <section id="galeri" class="bg-white py-5">
   <div class="container position-relative">
     <h2 class="text-center text-muted mb-5" data-aos="fade-down">Galeri</h2>
 
-    <!-- Tombol Geser -->
-    <button class="btn btn-outline-secondary position-absolute top-50 start-0 translate-middle-y" onclick="scrollGallery(-1)">‹</button>
-    <button class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y" onclick="scrollGallery(1)">›</button>
+    <!-- Tombol Geser Galeri -->
+    <button class="btn btn-outline-secondary position-absolute top-50 start-0 translate-middle-y d-none d-md-block" onclick="scrollGallery(-1)">‹</button>
+    <button class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y d-none d-md-block" onclick="scrollGallery(1)">›</button>
 
-    <!-- Galeri Scroll -->
+    <!-- Scroll Galeri -->
     <div id="galeriSlider" class="d-flex flex-row flex-nowrap gap-3 px-5" style="overflow-x: auto; scroll-behavior: smooth;">
+      
       <!-- Item Galeri -->
-      <div class="flex-shrink-0" style="width: 200px;" data-aos="fade-up" data-aos-delay="100">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#galeriModal1">
-          <img src="assets/kerja-bakti.jpg" class="img-fluid rounded shadow-sm galeri-img" style="height: 200px; object-fit: cover;" alt="Galeri 1">
-        </a>
-      </div>
-      <div class="flex-shrink-0" style="width: 200px;" data-aos="fade-up" data-aos-delay="200">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#galeriModal2">
-          <img src="assets/kerja.jpg" class="img-fluid rounded shadow-sm galeri-img" style="height: 200px; object-fit: cover;" alt="Galeri 2">
-        </a>
-      </div>
-      <div class="flex-shrink-0" style="width: 200px;" data-aos="fade-up" data-aos-delay="300">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#galeriModal3">
-          <img src="assets/pelatihan.jpg" class="img-fluid rounded shadow-sm galeri-img" style="height: 200px; object-fit: cover;" alt="Galeri 3">
-        </a>
-      </div>
-      <div class="flex-shrink-0" style="width: 200px;" data-aos="fade-up" data-aos-delay="400">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#galeriModal4">
-          <img src="assets/sepak bola.jpg" class="img-fluid rounded shadow-sm galeri-img" style="height: 200px; object-fit: cover;" alt="Galeri 4">
-        </a>
-      </div>
-      <div class="flex-shrink-0" style="width: 200px;" data-aos="fade-up" data-aos-delay="500">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#galeriModal5">
-          <img src="assets/voli.jpg" class="img-fluid rounded shadow-sm galeri-img" style="height: 200px; object-fit: cover;" alt="Galeri 5">
-        </a>
-      </div>
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 1" data-caption="Keterangan singkat tentang foto ini." data-index="0" data-src="assets/kerja-bakti.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/kerja-bakti.webp" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 1">
+      </a>
+
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 2" data-caption="Keterangan singkat tentang foto ini." data-index="1" data-src="assets/kerja.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="200">
+        <img src="assets/kerja.webp" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 2">
+      </a>
+
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 3" data-caption="Keterangan singkat tentang foto ini." data-index="2" data-src="assets/pelatihan.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="300">
+        <img src="assets/pelatihan.webp" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 3">
+      </a>
+
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 4" data-caption="Kegiatan olahraga sepak bola Karang Taruna." data-index="3" data-src="assets/sepak bola.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="400">
+        <img src="assets/sepak bola.webp" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 4">
+      </a>
+
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 5" data-caption="Pertandingan voli antar RT dalam kegiatan 17-an." data-index="4" data-src="assets/voli.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="500">
+        <img src="assets/voli.webp" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 5">
+      </a>
     </div>
   </div>
 </section>
 
-<!-- Script Scroll Horizontal -->
+<!-- Modal Galeri Dinamis -->
+<div class="modal fade" id="galeriModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content text-center">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body">
+        <h5 id="modalTitle" class="mb-3 text-uppercase text-secondary"></h5>
+        <div class="position-relative">
+          <button class="btn btn-light position-absolute top-50 start-0 translate-middle-y" onclick="changePhoto(-1)">‹</button>
+          <img id="modalImage" src="" class="img-fluid rounded mb-3" alt="Preview Galeri">
+          <button class="btn btn-light position-absolute top-50 end-0 translate-middle-y" onclick="changePhoto(1)">›</button>
+        </div>
+        <p id="modalCaption" class="mb-3"></p>
+        <button class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-xmark me-2"></i> Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script Scroll Galeri -->
 <script>
   function scrollGallery(direction) {
     const container = document.getElementById("galeriSlider");
-    const scrollAmount = 220; // bisa disesuaikan
+    const scrollAmount = 220;
     container.scrollBy({
       left: direction * scrollAmount,
       behavior: 'smooth'
@@ -1025,89 +1076,72 @@ inputMessage.onkeydown = (e) => {
   }
 </script>
 
-<!-- Modal Foto Galeri 1 -->
-<div class="modal fade" id="galeriModal1" tabindex="-1" aria-labelledby="galeriModalLabel1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <h5 class="mb-3 text-uppercase text-secondary">Judul Foto Galeri 1</h5>
-        <img src="assets/kerja-bakti.jpg" class="img-fluid rounded mb-3" alt="Galeri 1 Besar" />
-        <p class="mb-3">Keterangan singkat tentang foto ini.</p>
-        <button class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-xmark me-2"></i> Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Script Modal Galeri -->
+<script>
+  const galeriData = [
+    {
+      src: 'assets/kerja-bakti.webp',
+      title: 'Judul Foto Galeri 1',
+      caption: 'Keterangan singkat tentang foto ini.'
+    },
+    {
+      src: 'assets/kerja.webp',
+      title: 'Judul Foto Galeri 2',
+      caption: 'Keterangan singkat tentang foto ini.'
+    },
+    {
+      src: 'assets/pelatihan.webp',
+      title: 'Judul Foto Galeri 3',
+      caption: 'Keterangan singkat tentang foto ini.'
+    },
+    {
+      src: 'assets/sepak bola.webp',
+      title: 'Judul Foto Galeri 4',
+      caption: 'Kegiatan olahraga sepak bola Karang Taruna.'
+    },
+    {
+      src: 'assets/voli.webp',
+      title: 'Judul Foto Galeri 5',
+      caption: 'Pertandingan voli antar RT dalam kegiatan 17-an.'
+    }
+  ];
 
-<!-- Modal Foto Galeri 2 -->
-<div class="modal fade" id="galeriModal2" tabindex="-1" aria-labelledby="galeriModalLabel2" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <h5 class="mb-3 text-uppercase text-secondary">Judul Foto Galeri 2</h5>
-        <img src="assets/kerja.jpg" class="img-fluid rounded mb-3" alt="Galeri 2 Besar" />
-        <p class="mb-3">Keterangan singkat tentang foto ini.</p>
-        <button class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-xmark me-2"></i> Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
+  let currentIndex = 0;
 
-<!-- Modal Foto Galeri 3 -->
-<div class="modal fade" id="galeriModal3" tabindex="-1" aria-labelledby="galeriModalLabel3" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <h5 class="mb-3 text-uppercase text-secondary">Judul Foto Galeri 3</h5>
-        <img src="assets/pelatihan.jpg" class="img-fluid rounded mb-3" alt="Galeri 3 Besar" />
-        <p class="mb-3">Keterangan singkat tentang foto ini.</p>
-        <button class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-xmark me-2"></i> Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
+  function openGallery(element) {
+    currentIndex = parseInt(element.dataset.index);
+    updateModal();
+  }
 
-<!-- Modal Foto Galeri 4 -->
-<div class="modal fade" id="galeriModal4" tabindex="-1" aria-labelledby="galeriModalLabel4" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <h5 class="mb-3 text-uppercase text-secondary">Judul Foto Galeri 4</h5>
-        <img src="assets/sepak bola.jpg" class="img-fluid rounded mb-3" alt="Galeri 4 Besar" />
-        <p class="mb-3">Keterangan singkat tentang foto ini.</p>
-        <button class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-xmark me-2"></i> Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal Foto Galeri 5 -->
-<div class="modal fade" id="galeriModal5" tabindex="-1" aria-labelledby="galeriModalLabel5" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <h5 class="mb-3 text-uppercase text-secondary">Judul Foto Galeri 5</h5>
-        <img src="assets/voli.jpg" class="img-fluid rounded mb-3" alt="Galeri 5 Besar" />
-        <p class="mb-3">Keterangan singkat tentang foto ini.</p>
-        <button class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-xmark me-2"></i> Tutup</button>
-      </div>
-    </div>
-  </div>
-</div>
+  function updateModal() {
+    const data = galeriData[currentIndex];
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalImage').src = data.src;
+    document.getElementById('modalImage').alt = data.title;
+    document.getElementById('modalCaption').textContent = data.caption;
+  }
+
+  function changePhoto(direction) {
+    currentIndex = (currentIndex + direction + galeriData.length) % galeriData.length;
+    updateModal();
+  }
+
+  // Optional: support keyboard panah kiri-kanan
+  document.addEventListener('keydown', function (e) {
+    if (document.getElementById('galeriModal').classList.contains('show')) {
+      if (e.key === 'ArrowLeft') changePhoto(-1);
+      if (e.key === 'ArrowRight') changePhoto(1);
+    }
+  });
+</script>
+
+<!-- Inisialisasi AOS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 
  <!-- Kontak -->
 <section id="kontak" class="py-5 bg-light">

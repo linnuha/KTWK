@@ -1,0 +1,452 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Undangan RAS</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+          .signature-pad {
+              border: 1px solid #000;
+              background-color: #fff;
+              width: 300px;
+              height: 150px;
+              margin: 0 auto;
+          }
+          .invitation-card {
+              border: 1px solid #ddd;
+              padding: 20px;
+              margin-bottom: 20px;
+              border-radius: 5px;
+          }
+          .signature-image {
+              max-width: 150px;
+              margin-left: 10px;
+              border: 1px dashed #ddd;
+          }
+          .header-logo {
+              width: 80px;
+              height: auto;
+              margin-right: 10px;
+          }
+          .header-container {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+          /* Popup Styles */
+          .modal-content {
+              max-width: 600px;
+              margin: auto;
+          }
+          .top-right {
+              margin-left: auto; /* Pushes it to the right */
+              text-align: right;
+          }
+      </style>
+      <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 glass-effect" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <img src="logo.webp" class="me-2" alt="Logo" style="height: 40px;"> Karang Taruna Wijaya Kusuma
+    </a>
+    
+    <!-- HAPUS data-bs-toggle dan data-bs-target -->
+    <button id="menuToggle" class="navbar-toggler d-lg-none bg-primary text-white rounded d-flex align-items-center"
+        type="button" aria-label="Toggle navigation">
+  <span id="menuText" class="me-2">Menu</span>
+  <i class="fas fa-bars"></i>
+</button>
+
+    <div class="collapse navbar-collapse" id="mainNavCollapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html#beranda">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#profil">Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#program">Program</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#galeri">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#kontak">Kontak</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navCollapse = document.getElementById("mainNavCollapse");
+    const menuToggle = document.getElementById("menuToggle");
+    const menuText = document.getElementById("menuText");
+    const bsCollapse = new bootstrap.Collapse(navCollapse, { toggle: false });
+
+    // Tombol toggle
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navCollapse.classList.contains("show");
+
+      if (isOpen) {
+        bsCollapse.hide();
+        menuText.textContent = "Menu";
+      } else {
+        bsCollapse.show();
+        menuText.textContent = "Tutup";
+      }
+    });
+
+    // Tutup menu saat klik link (jika di handphone)
+    document.querySelectorAll(".nav-link, .dropdown-item").forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (window.innerWidth < 992 && navCollapse.classList.contains("show")) {
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
+</script>
+
+<!-- Contoh CSS logo (tambahkan ke file style.css atau dalam <style>) -->
+<style>
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+</style>
+<style>
+  #galeriSlider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  #galeriSlider {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+</style>
+  </head>
+  <body>
+      <!-- Input Logo dan Identitas -->
+  <section class="py-4 bg-light">
+  <div class="container">
+    <h4 class="mb-4 fw-bold" style="margin-top: 80px;">🖼️ Logo & Identitas Organisasi</h4>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label">Upload Logo:</label>
+          <input type="file" id="logoUpload" accept="image/*" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Baris 1:</label>
+          <input type="text" id="orgLine1" class="form-control" value="PERKUMPULAN PEMUDA-PEMUDI">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Baris 2:</label>
+          <input type="text" id="orgLine2" class="form-control" value="RUKUN AGAWE SANTOSA (RAS)">
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">Baris 3 (Alamat):</label>
+          <input type="text" id="orgLine3" class="form-control" value="Jl. Parangtritis Km 6,5 Ngijo Bangunharjo Sewon Bantul">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Undangan Section -->
+  <section class="py-4">
+    <div class="container">
+      <div class="card p-4">
+        <div class="text-center mb-4">
+          <div class="header-container">
+           <img id="previewLogo" src="logo.webp" alt="Logo Preview" class="header-logo">
+            <div>
+              <h3 class="mb-0" id="previewLine1">PERKUMPULAN PEMUDA-PEMUDI</h3>
+            <h4 class="mb-0" id="previewLine2">RUKUN AGAWE SANTOSA (RAS)</h4>
+            <p class="mb-0" id="previewLine3">Jl. Parangtritis Km 6,5 Ngijo Bangunharjo Sewon Bantul</p>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div>      
+                      <div class="header-title d-flex justify-content-between align-items-center">
+                          <h5 class="mb-0">Hal: Undangan</h5>
+                          <input type="text" id="locationDateInput" placeholder="Bantul, 2 Januari 2025" style="border: 1px solid #000; width: 200px;">
+                      </div>
+                      <p>Kepada Yth. <br>
+                          <div class="d-flex align-items-center mb-2">
+                              <span>Sdr/i: </span>
+                              <input type="text" id="manualInput" placeholder="Masukkan Nama" style="border: none; border-bottom: 1px solid #000; width: 300px; margin-left: 10px;">
+                              <input type="file" id="excelInput" accept=".xlsx, .xls" class="form-control ms-2" style="max-width: 200px; display: none;">
+                              <select id="manualOrExcel" class="form-select ms-2" style="max-width: 150px;">
+                                  <option value="manual">Manual</option>
+                                  <option value="excel">Dari Excel</option>
+                              </select>
+                              <button class="btn btn-success ms-2" id="addNameButton">Tambah Nama</button>
+                          </div>
+                          <br> Di <input type="text" id="locationInput" placeholder="Masukkan Lokasi" style="border: none; border-bottom: 1px solid #000; width: 200px; margin-left: 10px;">
+                      </p>
+
+                      <p style="text-indent: 30px;">Dengan hormat,</p>
+                      <p style="text-indent: 30px;">Sehubungan dengan pelaksanaan acara <em>Pemilihan Calon Ketua & Wakil RAS</em>, kami mengundang kehadiran Saudara/i pada:</p>
+
+                      <div style="padding-left: 30px;">
+                          <div class="d-flex align-items-center mb-2">
+                              <strong style="width: 120px;">Hari/Tanggal:</strong>
+                              <input type="text" id="tanggalInput" placeholder="Masukkan Hari/Tanggal" style="border: none; border-bottom: 1px solid #000; flex: 1;">
+                          </div>
+                          <div class="d-flex align-items-center mb-2">
+                              <strong style="width: 120px;">Pukul:</strong>
+                              <input type="text" id="pukulInput" placeholder="Masukkan Pukul" style="border: none; border-bottom: 1px solid #000; flex: 1;">
+                          </div>
+                          <div class="d-flex align-items-center mb-2">
+                              <strong style="width: 120px;">Tempat:</strong>
+                              <input type="text" id="tempatInput" placeholder="Masukkan Tempat" style="border: none; border-bottom: 1px solid #000; flex: 1;">
+                          </div>
+                          <div class="d-flex align-items-center mb-2">
+                              <strong style="width: 120px;">Acara:</strong>
+                              <input type="text" id="acaraInput" placeholder="Masukkan Acara" style="border: none; border-bottom: 1px solid #000; flex: 1;">
+                          </div>
+                      </div>
+
+                      <p style="text-indent: 30px;">Demikian undangan ini kami sampaikan. Besar harapan kami atas kehadiran Saudara/i tepat waktu. Atas perhatian dan kerja samanya, kami ucapkan terima kasih.</p>
+                      <div class="row text-center mt-4">
+  <div class="container my-5">
+  <div class="row text-center align-items-start">
+    <!-- Kolom Ketua -->
+    <div class="col-md-6">
+      <!-- Spacer agar sejajar dengan 'Hormat kami' -->
+      <div style="height: 1.5em;"></div>
+      <p class="mb-1"><strong>Ketua</strong></p>
+      <div class="d-flex align-items-center justify-content-center mb-2">
+        <input type="file" id="fileSignatureChairman" accept="image/*" class="form-control" style="max-width: 200px;" onchange="displaySignatureImage(event, 'signatureImageChairman')">
+        <img id="signatureImageChairman" src="" alt="Tanda Tangan Ketua" style="display: none; max-height: 80px;" class="ms-2">
+        <button type="button" class="btn btn-danger ms-2" onclick="clearSignature('signatureImageChairman', 'fileSignatureChairman')">Hapus</button>
+      </div>
+      <input type="text" placeholder="Masukkan Nama Ketua" id="namaKetua" class="text-center" style="border: none; border-bottom: 1px solid #000; width: 200px;">
+    </div>
+
+    <!-- Kolom Sekretaris -->
+    <div class="col-md-6">
+      <p class="fw-bold mb-1">Hormat kami,</p>
+      <p class="mb-1"><strong>Sekretaris</strong></p>
+      <div class="d-flex align-items-center justify-content-center mb-2">
+        <input type="file" id="fileSignatureSekretaris" accept="image/*" class="form-control" style="max-width: 200px;" onchange="displaySignatureImage(event, 'signatureImageSekretaris')">
+        <img id="signatureImageSekretaris" src="" alt="Tanda Tangan Sekretaris" style="display: none; max-height: 80px;" class="ms-2">
+        <button type="button" class="btn btn-danger ms-2" onclick="clearSignature('signatureImageSekretaris', 'fileSignatureSekretaris')">Hapus</button>
+      </div>
+      <input type="text" placeholder="Masukkan Nama Sekretaris" id="namaSekretaris" class="text-center" style="border: none; border-bottom: 1px solid #000; width: 200px;">
+    </div>
+  </div>
+</div>
+
+                      <div style="text-align: left;"><strong>NB:</strong> <input type="text" placeholder="Masukkan catatan tambahan" style="border: none; border-bottom: 1px solid #000; width: 300px;"></div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+      <!-- Preview Section -->
+      <section class="py-5 bg-light">
+          <div class="container">
+              <button class="btn btn-primary" id="previewButton">Preview</button>
+          </div>
+      </section>
+
+      <!-- Modal for Preview -->
+      <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="previewModalLabel">Preview Undangan</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" id="previewContainer"></div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                      <button type="button" class="btn btn-info" id="printButton">Cetak Undangan</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- JavaScript for toggling signature input -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+           <script>
+    // Inisialisasi nilai awal
+    document.getElementById('orgLine1').addEventListener('input', function () {
+      document.getElementById('previewLine1').textContent = this.value;
+    });
+    document.getElementById('orgLine2').addEventListener('input', function () {
+      document.getElementById('previewLine2').textContent = this.value;
+    });
+    document.getElementById('orgLine3').addEventListener('input', function () {
+      document.getElementById('previewLine3').textContent = this.value;
+    });
+
+    document.getElementById('logoUpload').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById('previewLogo').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+           <script>
+          window.names = [];
+          window.eventDetails = {};
+
+          const manualOrExcel = document.getElementById('manualOrExcel');
+          const manualInput = document.getElementById('manualInput');
+          const excelInput = document.getElementById('excelInput');
+
+          manualOrExcel.addEventListener('change', function () {
+              if (this.value === 'excel') {
+                  manualInput.style.display = 'none';
+                  excelInput.style.display = 'block';
+              } else {
+                  manualInput.style.display = 'block';
+                  excelInput.style.display = 'none';
+              }
+          });
+
+          document.getElementById('addNameButton').addEventListener('click', function() {
+              const name = document.getElementById('manualInput').value.trim();
+              if (name) {
+                  window.names.push(name);
+                  document.getElementById('manualInput').value = '';
+                  alert(`${name} telah ditambahkan!`);
+              } else {
+                  alert('Masukkan nama yang valid!');
+              }
+          });
+
+          excelInput.addEventListener('change', (event) => {
+              const file = event.target.files[0];
+              if (file) {
+                  const reader = new FileReader();
+                  reader.onload = (e) => {
+                      const data = new Uint8Array(e.target.result);
+                      const workbook = XLSX.read(data, { type: 'array' });
+                      const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                      const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+
+                      window.names = [];
+                      jsonData.forEach((row, index) => {
+                          if (index > 0) {
+                              window.names.push(row[0]);
+                          }
+                      });
+                  };
+                  reader.readAsArrayBuffer(file);
+              }
+          });
+
+          function displaySignatureImage(event, imageId) {
+              const file = event.target.files[0];
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                  document.getElementById(imageId).src = e.target.result;
+                  document.getElementById(imageId).style.display = 'block';
+              };
+              reader.readAsDataURL(file);
+          }
+
+          function clearSignature(imageId, fileInputId) {
+              document.getElementById(imageId).style.display = 'none';
+              document.getElementById(imageId).src = '';
+              document.getElementById(fileInputId).value = '';
+          }
+
+          document.getElementById('previewButton').addEventListener('click', function() {
+              const locationDate = document.getElementById('locationDateInput').value;
+              const location = document.getElementById('locationInput').value;
+              const tanggal = document.getElementById('tanggalInput').value;
+              const pukul = document.getElementById('pukulInput').value;
+              const tempat = document.getElementById('tempatInput').value;
+              const acara = document.getElementById('acaraInput').value;
+              const ketuaName = document.getElementById('namaKetua').value;
+              const sekretarisName = document.getElementById('namaSekretaris').value;
+              const notes = document.querySelector('input[placeholder="Masukkan catatan tambahan"]').value;
+              const signatureChairman = document.getElementById('signatureImageChairman').src;
+              const signatureSekretaris = document.getElementById('signatureImageSekretaris').src;
+
+              const previewContainer = document.getElementById('previewContainer');
+              previewContainer.innerHTML = '';
+
+              window.names.forEach(name => {
+                  const previewContent = `
+                      <div class="invitation-card mb-4">
+                          <div class="text-center mb-4">
+                              <div class="header-container">
+                                  <img src="logo.webp" alt="Logo RAS" class="header-logo">
+                                  <div>
+                                      <h3 class="mb-0">PERKUMPULAN PEMUDA-PEMUDI</h3>
+                                      <h4 class="mb-0">RUKUN AGAWE SANTOSA (RAS)</h4>
+                                      <p class="mb-0">Jl. Parangtritis Km 6,5 Ngijo Bangunharjo Sewon Bantul</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <hr>
+                          <div class="header-title">
+                              <h5 class="mb-0">Hal: Undangan</h5>
+                              <div class="top-right">
+                                  <p>${locationDate}</p>
+                              </div>
+                          </div>
+                          <p>Kepada Yth. <br>
+                              <strong>Sdr/i:</strong> ${name}<br>
+                              Di ${location}
+                          </p>
+                          <p style="text-indent: 30px;">Dengan hormat,</p>
+                          <p style="text-indent: 30px;">Sehubungan dengan pelaksanaan acara <em>Pemilihan <p>Calon Ketua & Wakil RAS</em>, kami </p><p>mengundang kehadiran Saudara/i pada:</p>
+                          <div style="padding-left: 30px;">
+                              <p><strong>Hari/Tanggal:</strong> ${tanggal}</p>
+                              <p><strong>Pukul:</strong> ${pukul}</p>
+                              <p><strong>Tempat:</strong> ${tempat}</p>
+                              <p><strong>Acara:</strong> ${acara}</p>
+                          </div>
+                          <p style="text-indent: 30px;">Demikian undangan ini kami sampaikan. Besar harapan kami atas kehadiran Saudara/i tepat waktu. Atas perhatian dan kerja samanya, kami ucapkan terima kasih.</p>
+                          <div class="row text-center mt-4">
+  <<div class="row text-center mt-4 align-items-start">
+  <div class="col-md-6">
+    <!-- Tambahkan padding kosong agar sejajar dengan 'Hormat kami,' di kanan -->
+    <p style="visibility: hidden;"><strong>Hormat kami,</strong></p>
+    <p>Ketua</p>
+    <img src="${signatureChairman}" alt="Tanda Tangan Ketua" class="signature-image" style="display: block; margin: 0 auto; max-height: 80px;">
+    <p>${ketuaName}</p>
+  </div>
+  <div class="col-md-6">
+    <p><strong>Hormat kami,</strong></p>
+    <p>Sekretaris</p>
+    <img src="${signatureSekretaris}" alt="Tanda Tangan Sekretaris" class="signature-image" style="display: block; margin: 0 auto; max-height: 80px;">
+    <p>${sekretarisName}</p>
+  </div>
+</div>
+
+                          <p><strong>NB:</strong> ${notes}</p>
+                      </div>`;
+                  previewContainer.innerHTML += previewContent;
+              });
+
+              // Show the modal
+              const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
+              previewModal.show();
+          });
+
+          document.getElementById('printButton').addEventListener('click', function() {
+              const previewContent = document.getElementById('previewContainer').innerHTML;
+              const printWindow = window.open('', '', 'height=600,width=800');
+              printWindow.document.write('<html><head><title>Print Preview</title>');
+              printWindow.document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">');
+              printWindow.document.write('</head><body>');
+              printWindow.document.write(previewContent);
+              printWindow.document.write('</body></html>');
+              printWindow.document.close();
+              printWindow.print();
+          });
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  </body>
+  </html>
