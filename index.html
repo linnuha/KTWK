@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Karang Taruna</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css">
+<!-- Di <head> -->
+<meta name="description" content="Karang Taruna Wijaya Kusuma - Membina pemuda yang kreatif dan aktif di masyarakat.">
+<meta name="author" content="Karang Taruna Wijaya Kusuma">
+<meta name="theme-color" content="#0d6efd">
+<link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" loading="lazy" alt="Alt">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      position: relative;
+      scroll-padding-top: 70px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .logo {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .nav-link.active {
+      font-weight: bold;
+      border-bottom: 2px solid #fff;
+    }
+    section {
+      padding: 100px 0;
+    }
+    h1, h2, h5 {
+      color: #0d6efd;
+    }
+    .card {
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+    .glass-effect {
+      background-color: rgba(255, 255, 255, 0.6) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #000 !important;
+    }
+    .glass-effect .nav-link,
+    .glass-effect .navbar-brand,
+    .glass-effect p {
+      color: #000 !important;
+    }
+  </style>
+  <style>
+    .preview-card {
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fff;
+    }
+
+    .preview-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .preview-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .text-overlay {
+      z-index: 2;
+    }
+
+    .overlay-box {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      color: #000;
+    }
+
+    .arrow-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    @media (max-width: 576px) {
+      .arrow-btn {
+        display: none;
+      }
+    }
+  </style>
+  
+<style>
+  .hover-shadow:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+</style>
+<style>
+  .galeri-img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .galeri-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+  }
+</style>
+<!-- Animasi dan efek hover -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<!-- FontAwesome (untuk ikon x) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" />
+ <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Script Tutup Menu Otomatis -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".nav-link:not(.dropdown-toggle), .dropdown-item");
+    const navbarCollapse = document.getElementById("navbarNav");
+
+    navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
+          const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
+</script>
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    const programContainer = document.getElementById("programSlider");
+    const scrollAmount = 270;
+
+    document.getElementById("programLeft").onclick = () => {
+      programContainer.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    };
+
+    document.getElementById("programRight").onclick = () => {
+      programContainer.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    };
+  });
+</script>
+<style>
+    /* Kursor berkedip */
+    #typedText::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+      color: rgb(255, 253, 253);
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="70" tabindex="0">
+<script>
+  const typedTextEl = document.getElementById('typedText');
+  const text = "Bersama membangun generasi muda yang aktif, kreatif, dan peduli sosial.";
+  let index = 0;
+
+  function typeEffect() {
+    if (index < text.length) {
+      typedTextEl.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeEffect, 40);
+    }
+  }
+
+  window.addEventListener('load', typeEffect);
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const typedTextEl = document.getElementById('typedText');
+    const text = "Bersama membangun generasi muda yang aktif, kreatif, dan peduli sosial.";
+    let index = 0;
+
+    function typeEffect() {
+      if (index < text.length) {
+        typedTextEl.textContent += text.charAt(index); // ← teks ditambahkan huruf demi huruf
+        index++;
+        setTimeout(typeEffect, 40); // ← jeda antar huruf
+      }
+    }
+
+    typeEffect(); // ← mulai efek mengetik saat halaman siap
+  });
+</script>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 glass-effect" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <img src="logo.webp" loading="lazy" class="me-2" alt="Logo" style="height: 40px;"> Karang Taruna Wijaya Kusuma
+    </a>
+    
+    <!-- HAPUS data-bs-toggle dan data-bs-target -->
+    <button id="menuToggle" class="navbar-toggler d-lg-none bg-primary text-white rounded d-flex align-items-center"
+        type="button" aria-label="Toggle navigation">
+  <span id="menuText" class="me-2">Menu</span>
+  <i class="fas fa-bars"></i>
+</button>
+
+    <div class="collapse navbar-collapse" id="mainNavCollapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="#program">Program</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navCollapse = document.getElementById("mainNavCollapse");
+    const menuToggle = document.getElementById("menuToggle");
+    const menuText = document.getElementById("menuText");
+    const bsCollapse = new bootstrap.Collapse(navCollapse, { toggle: false });
+
+    // Tombol toggle
+    menuToggle.addEventListener("click", function () {
+      const isOpen = navCollapse.classList.contains("show");
+
+      if (isOpen) {
+        bsCollapse.hide();
+        menuText.textContent = "Menu";
+      } else {
+        bsCollapse.show();
+        menuText.textContent = "Tutup";
+      }
+    });
+
+    // Tutup menu saat klik link (jika di handphone)
+    document.querySelectorAll(".nav-link, .dropdown-item").forEach(function (link) {
+      link.addEventListener("click", function () {
+        if (window.innerWidth < 992 && navCollapse.classList.contains("show")) {
+          bsCollapse.hide();
+        }
+      });
+    });
+  });
+</script>
+
+<!-- Contoh CSS logo (tambahkan ke file style.css atau dalam <style>) -->
+<style>
+  .logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+</style>
+<style>
+  #galeriSlider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  #galeriSlider {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+</style>
+ <style>
+    body {
+        background-color: #f0f2f5;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Tombol Floating */
+    #chat-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #4e73df;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        font-size: 24px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        z-index: 999;
+    }
+    #chat-float:hover {
+        background-color: #2e59d9;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    /* Chat Modal */
+    #chat-modal {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 370px;
+        max-height: 600px;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1050;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        /* Sembunyikan secara default */
+        pointer-events: none;
+    }
+    #chat-modal.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    #chat-header {
+        padding: 15px;
+        background-color: #4e73df;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #chat-body {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #typing-indicator {
+        display: none;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    /* Pesan Bubble */
+    .message {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: flex-end;
+    }
+    .user {
+        justify-content: flex-end;
+    }
+    .bot {
+        justify-content: flex-start;
+    }
+    .message div {
+        max-width: 70%;
+        padding: 10px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        line-height: 1.4;
+        transition: all 0.2s;
+        position: relative;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .user div {
+        background-color: #4e73df;
+        color: #fff;
+        border-bottom-right-radius: 5px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    .bot div {
+        background-color: #e2e6ea;
+        color: #000;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    /* Input area */
+    #chat-input {
+        display: flex;
+        padding: 10px 15px;
+        border-top: 1px solid #dee2e6;
+        background-color: #fff;
+    }
+
+    #chat-input input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid #ced4da;
+        border-radius: 25px;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+
+    #chat-input input:focus {
+        border-color: #4e73df;
+        box-shadow: 0 0 0 2px rgba(78, 115, 223, 0.2);
+    }
+
+    #chat-input button {
+        margin-left: 10px;
+        border: none;
+        background-color: #4e73df;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s;
+    }
+    #chat-input button:hover {
+        background-color: #2e59d9;
+    }
+</style>
+</head>
+<body>
+
+<!-- Tombol Floating -->
+<div id="chat-float" aria-label="Buka chat AI">💬</div>
+
+<!-- Chat Modal -->
+<div id="chat-modal">
+    <div id="chat-header">
+        <span>Chat AI Pintar</span>
+        <button type="button" class="btn-close" aria-label="Close" id="close-chat"></button>
+    </div>
+    <div id="chat-body">
+        <div id="typing-indicator">AI sedang mengetik...</div>
+    </div>
+    <div id="chat-input">
+        <input type="text" id="input-message" placeholder="Ketik pesan..." />
+        <button id="send-message" aria-label="Kirim">➤</button>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+const chatFloat = document.getElementById('chat-float');
+const chatModal = document.getElementById('chat-modal');
+const closeBtn = document.getElementById('close-chat');
+const chatBody = document.getElementById('chat-body');
+const inputMessage = document.getElementById('input-message');
+const sendBtn = document.getElementById('send-message');
+const typingIndicator = document.getElementById('typing-indicator');
+
+// Fungsi tampilkan/hidden chat
+function toggleChat() {
+    if (chatModal.classList.contains('show')) {
+        chatModal.classList.remove('show');
+    } else {
+        chatModal.classList.add('show');
+        inputMessage.focus();
+    }
+}
+
+// Klik ikon untuk buka/tutup chat
+chatFloat.onclick = () => {
+    toggleChat();
+};
+
+// Tombol tutup di header
+closeBtn.onclick = () => {
+    toggleChat();
+};
+
+// Fungsi menambahkan pesan
+function addMessage(text, sender) {
+    const div = document.createElement('div');
+    div.className = 'message ' + sender;
+    div.innerHTML = `<div>${text}</div>`;
+    chatBody.insertBefore(div, typingIndicator);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+// Data respons AI
+function generateResponse(input) {
+    const lower = input.toLowerCase();
+    const responses = [
+        {
+            keywords: ['kabarnya', 'apa kabar', 'lagi apa'],
+            reply: 'Saya baik, terima kasih! Ada yang bisa saya bantu hari ini? 😊'
+        },
+        {
+            keywords: ['nama ai', 'siapa kamu', 'kamu siapa'],
+            reply: 'Saya adalah AI Pintar yang siap membantu Anda. Apa yang ingin Anda tanyakan?'
+        },
+        {
+            keywords: ['karang taruna', 'apa itu karang taruna', 'fungsi karang taruna'],
+            reply: 'Karang Taruna adalah organisasi sosial pemuda di tingkat desa yang fokus pada kegiatan sosial, budaya, dan pengembangan masyarakat.'
+        },
+        {
+            keywords: ['tujuan karang taruna', 'misi karang taruna', 'apa tujuan karang taruna'],
+            reply: 'Tujuan utama Karang Taruna adalah mengembangkan potensi pemuda dan berkontribusi positif di komunitas.'
+        },
+        {
+            keywords: ['apa itu covid', 'covid-19', 'pandemi'],
+            reply: 'COVID-19 adalah penyakit yang disebabkan oleh virus corona dan menyebar secara global. Penting untuk mengikuti protokol kesehatan.'
+        },
+        {
+            keywords: ['cuaca hari ini', 'ramalan cuaca', 'prakiraan cuaca'],
+            reply: 'Maaf, saya belum terintegrasi dengan data cuaca real-time. Tapi kamu bisa cek aplikasi cuaca di ponselmu ya!'
+        },
+        {
+            keywords: ['tanggal hari ini', 'hari apa', 'tanggal'],
+            reply: `Hari ini tanggal ${new Date().toLocaleDateString()}.`
+        },
+        {
+            keywords: ['siapa presiden indonesia', 'presiden indonesia', 'presiden saat ini'],
+            reply: 'Presiden Indonesia saat ini adalah Joko Widodo.'
+        },
+        {
+            keywords: ['apa itu pendidikan', 'pengertian pendidikan'],
+            reply: 'Pendidikan adalah proses pembelajaran yang bertujuan untuk mengembangkan potensi individu dan membentuk karakter.'
+        },
+        {
+            keywords: ['bantuan', 'tolong', 'ada yang bisa saya bantu'],
+            reply: 'Tentu, silakan tanyakan apa saja yang ingin kamu ketahui!'
+        }
+    ];
+
+    for (let resp of responses) {
+        for (let keyword of resp.keywords) {
+            if (lower.includes(keyword)) {
+                return resp.reply;
+            }
+        }
+    }
+    return 'Maaf, saya belum paham. Bisa ulangi atau tanyakan hal lain?';
+}
+
+// Fungsi kirim pesan
+function sendMessage() {
+    const msg = inputMessage.value.trim();
+    if (msg === '') return;
+    addMessage(msg, 'user');
+    inputMessage.value = '';
+
+    // Tampilkan indikator mengetik
+    typingIndicator.style.display = 'block';
+
+    // Respon AI setelah delay
+    setTimeout(() => {
+        const reply = generateResponse(msg);
+        addMessage(reply, 'bot');
+        typingIndicator.style.display = 'none';
+    }, 1000);
+}
+
+// Event klik kirim
+sendBtn.onclick = () => {
+    sendMessage();
+};
+// Event tekan Enter
+inputMessage.onkeydown = (e) => {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+};
+</script>
+
+    </body>
+<!-- Beranda -->
+<!-- Beranda Futuristik -->
+ <section id="beranda" class="position-relative text-white d-flex align-items-center justify-content-center text-center" style="min-height: 100vh; overflow: hidden;">
+      <!-- Background Gambar -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="
+    background-image: url('https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;"></div>
+
+  <!-- Overlay Gelap + Blur -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2;"></div>
+
+  <!-- Konten -->
+<div class="container px-4" style="z-index: 3; animation: fadeInUp 1.2s ease;">
+  <h1 class="display-4 fw-bold mb-3 text-white">Salam Adhitya Karya Mahatva Yodha</h1>
+  <p class="lead mb-4" id="typedText"></p>
+
+  <!-- Tombol + Ikon Sosial -->
+  <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+    <a href="#program" class="btn btn-outline-light btn-lg px-4">Jelajahi Program</a>
+
+    <!-- Ikon Sosial -->
+    <div class="d-flex gap-3">
+      <a href="https://instagram.com" target="_blank" class="text-white fs-4"><i class="bi bi-instagram"></i></a>
+      <a href="https://facebook.com" target="_blank" class="text-white fs-4"><i class="bi bi-facebook"></i></a>
+      <a href="https://youtube.com" target="_blank" class="text-white fs-4"><i class="bi bi-youtube"></i></a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Animasi dan Gaya Tambahan -->
+ <!-- Profil -->
+  <section id="profil" class="bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up">Profil</h2>
+      <div class="row text-center mb-4">
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="card p-3 h-100">
+            <h4>Sejarah Singkat</h4>
+            <p class="text-muted">Karang Taruna adalah organisasi kepemudaan yang tumbuh dari, oleh, dan untuk masyarakat di tingkat desa/kelurahan. Didirikan sebagai wadah pembinaan dan pemberdayaan generasi muda.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card p-3 h-100">
+            <h4>Visi</h4>
+            <p class="text-muted">Terwujudnya generasi muda yang mandiri, berkarakter, dan aktif dalam pembangunan sosial masyarakat.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card p-3 h-100">
+            <h4>Misi</h4>
+            <ul class="text-muted text-start">
+              <li>Mengembangkan potensi dan kreativitas pemuda.</li>
+              <li>Meningkatkan kepedulian sosial.</li>
+              <li>Menumbuhkan semangat wirausaha.</li>
+              <li>Mempererat solidaritas antar warga.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Struktur Organisasi -->
+<section id="struktur" class="bg-light py-5 position-relative">
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up">Struktur Organisasi</h2>
+    <div class="position-relative">
+
+      <!-- Tombol Geser Kiri -->
+      <button class="btn btn-outline-secondary position-absolute top-50 start-0 translate-middle-y z-1 d-none" id="prevStruktur">
+        &#10094;
+      </button>
+
+      <!-- Kontainer Struktur -->
+      <div class="d-flex gap-3 px-4 flex-nowrap" id="struktur-container"
+           data-aos="fade-up"
+           style="scroll-behavior: smooth; overflow-x: auto; max-width: 100%;">
+        
+        <!-- Anggota: Ketua -->
+        <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
+          data-nama="Juwari"
+          data-jabatan="Ketua"
+          data-foto="assets/juwari.jpg"
+          data-deskripsi="Memimpin dan mengoordinasikan seluruh kegiatan organisasi.">
+          <img src="assets/juwari.webp" loading="lazy" alt="Alt" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:150px;height:150px;object-fit:cover;" alt="Ketua">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Juwari</h5>
+            <p class="text-muted">Ketua</p>
+          </div>
+        </div>
+
+        <!-- Anggota: Wakil Ketua I -->
+        <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
+          data-nama="Nopek"
+          data-jabatan="Wakil Ketua I"
+          data-foto="assets/nopek.png"
+          data-deskripsi="Membantu Ketua dalam pelaksanaan tugas.">
+          <img src="assets/nopek.webp" loading="lazy" alt="Alt" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:150px;height:150px;object-fit:cover;" alt="Wakil Ketua I">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Nopek</h5>
+            <p class="text-muted">Wakil Ketua I</p>
+          </div>
+        </div>
+
+        <!-- Anggota: Wakil Ketua II -->
+        <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
+          data-nama="Nopi"
+          data-jabatan="Wakil Ketua II"
+          data-foto="https://source.unsplash.com/200x200/?woman"
+          data-deskripsi="Membantu Ketua dalam pelaksanaan tugas.">
+          <img src="https://source.unsplash.com/200x200/?woman" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:120px;height:120px;object-fit:cover;" alt="Wakil Ketua II">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Nopi</h5>
+            <p class="text-muted">Wakil Ketua II</p>
+          </div>
+        </div>
+
+        <!-- Anggota: Sekretaris -->
+        <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
+          data-nama="Lestari Wulandari"
+          data-jabatan="Sekretaris"
+          data-foto="https://source.unsplash.com/200x200/?woman"
+          data-deskripsi="Mencatat dan mengelola administrasi organisasi.">
+          <img src="https://source.unsplash.com/200x200/?woman" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:120px;height:120px;object-fit:cover;" alt="Sekretaris">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Lestari Wulandari</h5>
+            <p class="text-muted">Sekretaris</p>
+          </div>
+        </div>
+
+        <!-- Anggota: Bendahara -->
+        <div class="card text-center flex-shrink-0 shadow-sm struktur-card" style="width: 250px; cursor:pointer;"
+          data-nama="Anang"
+          data-jabatan="Bendahara"
+          data-foto="https://source.unsplash.com/200x200/?man"
+          data-deskripsi="Mengelola keuangan dan pembukuan organisasi.">
+          <img src="https://source.unsplash.com/200x200/?man" class="card-img-top rounded-circle mx-auto mt-3"
+               style="width:120px;height:120px;object-fit:cover;" alt="Bendahara">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Anang</h5>
+            <p class="text-muted">Bendahara</p>
+          </div>
+        </div>
+
+        <!-- Tambahkan anggota lain di sini -->
+
+      </div>
+
+      <!-- Tombol Geser Kanan -->
+      <button class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y z-1 d-none" id="nextStruktur">
+        &#10095;
+      </button>
+
+    </div>
+  </div>
+</section>
+
+<!-- Sembunyikan scrollbar -->
+<style>
+  #struktur-container {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none;    /* Firefox */
+  }
+
+  #struktur-container::-webkit-scrollbar {
+    display: none;            /* Chrome, Safari */
+  }
+</style>
+
+<!-- Navigasi Scroll Script -->
+<script>
+  const strukturContainer = document.getElementById('struktur-container');
+  const prevBtn = document.getElementById('prevStruktur');
+  const nextBtn = document.getElementById('nextStruktur');
+
+  function updateButtons() {
+    const maxScrollLeft = strukturContainer.scrollWidth - strukturContainer.clientWidth;
+    prevBtn.classList.toggle('d-none', strukturContainer.scrollLeft <= 0);
+    nextBtn.classList.toggle('d-none', strukturContainer.scrollLeft >= maxScrollLeft - 10);
+  }
+
+  prevBtn.addEventListener('click', () => {
+    strukturContainer.scrollBy({ left: -260, behavior: 'smooth' });
+  });
+
+  nextBtn.addEventListener('click', () => {
+    strukturContainer.scrollBy({ left: 260, behavior: 'smooth' });
+  });
+
+  strukturContainer.addEventListener('scroll', updateButtons);
+  window.addEventListener('load', updateButtons);
+</script>
+
+</section>
+<!-- (Script removed because it does not match the HTML structure and causes errors) -->
+
+<!-- Modal Bootstrap -->
+<div class="modal fade" id="modalStruktur" tabindex="-1" aria-labelledby="modalStrukturLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalStrukturLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="modalFoto" src="" class="rounded-circle mb-3" style="width:120px;height:120px;object-fit:cover;">
+        <p class="text-muted" id="modalJabatan"></p>
+        <p id="modalDeskripsi"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Gaya Tambahan -->
+<style>
+  #struktur .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 1rem;
+  }
+  #struktur .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+</style>
+
+<!-- Script -->
+<script>
+  function scrollStruktur(direction) {
+    const strukturContainer = document.getElementById("struktur-container");
+    const scrollAmount = 260;
+    strukturContainer.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+
+  // Event listener untuk popup modal
+  document.querySelectorAll('.struktur-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const nama = card.getAttribute('data-nama');
+      const jabatan = card.getAttribute('data-jabatan');
+      const foto = card.getAttribute('data-foto');
+      const deskripsi = card.getAttribute('data-deskripsi');
+
+      document.getElementById('modalStrukturLabel').innerText = nama;
+      document.getElementById('modalFoto').src = foto;
+      document.getElementById('modalJabatan').innerText = jabatan;
+      document.getElementById('modalDeskripsi').innerText = deskripsi;
+
+      const modal = new bootstrap.Modal(document.getElementById('modalStruktur'));
+      modal.show();
+    });
+  });
+</script>
+
+<!-- Program -->
+<section id="program" class="bg-white py-5 position-relative">
+  <div class="container position-relative">
+    <h2 class="text-center text-muted mb-5" data-aos="fade-down">Program Kegiatan</h2>
+
+    <!-- Tombol Panah Kiri -->
+    <button id="scrollLeft" class="arrow-btn btn btn-light shadow rounded-circle position-absolute top-50 start-0 translate-middle-y z-3">
+      &larr;
+    </button>
+
+    <!-- Tombol Panah Kanan -->
+    <button id="scrollRight" class="arrow-btn btn btn-light shadow rounded-circle position-absolute top-50 end-0 translate-middle-y z-3">
+      &rarr;
+    </button>
+
+    <!-- Kontainer Scroll Horizontal -->
+    <div id="programContainer" class="d-flex overflow-auto gap-4 px-2" style="scroll-behavior: smooth;" data-aos="fade-up">
+      
+      <!-- Card 1 -->
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/kerja-bakti.webp" loading="lazy" alt="Kerja Bakti" class="img-fluid preview-img">
+        <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
+          <div class="overlay-box p-3 rounded-3 shadow-sm">
+            <h5 class="fw-bold mb-2">Kerja Bakti</h5>
+            <p class="small mb-3">Gotong royong bersih lingkungan tiap bulan.</p>
+            <a href="program-kerja-bakti.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="200">
+        <img src="assets/pelatihan.webp" loading="lazy" alt="Pelatihan" class="img-fluid preview-img">
+        <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
+          <div class="overlay-box p-3 rounded-3 shadow-sm">
+            <h5 class="fw-bold mb-2">Pelatihan</h5>
+            <p class="small mb-3">Pelatihan wirausaha dan keterampilan pemuda.</p>
+            <a href="program-pelatihan.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="300">
+        <img src="assets/voli.webp" loading="lazy" alt="Turnamen" class="img-fluid preview-img">
+        <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
+          <div class="overlay-box p-3 rounded-3 shadow-sm">
+            <h5 class="fw-bold mb-2">Turnamen</h5>
+            <p class="small mb-3">Turnamen olahraga antar RT dan pemuda.</p>
+            <a href="program-turnamen.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="400">
+        <img src="assets/pojok.webp" loading="lazy" alt="Curhat" class="img-fluid preview-img">
+        <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
+          <div class="overlay-box p-3 rounded-3 shadow-sm">
+            <h5 class="fw-bold mb-2">Pojok Curhat</h5>
+            <p class="small mb-3">Pendataan untuk menata potensi dan kekuatan dari anak muda.</p>
+            <a href="Pojok-curhat.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="500">
+        <img src="assets/QR.webp" loading="lazy" alt="QR" class="img-fluid preview-img">
+        <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
+          <div class="overlay-box p-3 rounded-3 shadow-sm">
+            <h5 class="fw-bold mb-2">QR Generate</h5>
+            <p class="small mb-3">Komunikasi kekinian dalam bentuk gambar terenkripsi.</p>
+            <a href="QRGenerate.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="600">
+        <img src="assets/pawartos.webp" loading="lazy" alt="Pawartos" class="img-fluid preview-img">
+        <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
+          <div class="overlay-box p-3 rounded-3 shadow-sm">
+            <h5 class="fw-bold mb-2">Pawartos Lelayu</h5>
+            <p class="small mb-3">Berita kematian online otomatis</p>
+            <a href="Pawartos-lelayu.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+<!-- Card 7 -->
+      <div class="preview-card position-relative flex-shrink-0" style="width: 300px;" data-aos="zoom-in" data-aos-delay="600">
+        <img src="assets/undangan.webp" loading="lazy" alt="Pawartos" class="img-fluid preview-img">
+        <div class="text-overlay position-absolute bottom-0 w-100 px-3 py-3">
+          <div class="overlay-box p-3 rounded-3 shadow-sm">
+            <h5 class="fw-bold mb-2">Undangan</h5>
+            <p class="small mb-3">Buat undangan online langsung share</p>
+            <a href="Undangan.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Script Bootstrap & AOS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+
+  // Scroll Button Logic
+  const programContainer = document.getElementById('programContainer');
+  const scrollAmount = 320;
+
+  document.getElementById('scrollLeft').addEventListener('click', () => {
+    programContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  document.getElementById('scrollRight').addEventListener('click', () => {
+    programContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+
+  // Tilt Hover Effect
+  const cards = document.querySelectorAll('.preview-card');
+
+  cards.forEach(card => {
+    const overlay = card.querySelector('.overlay-box');
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = -(y - rect.height / 2) / 15;
+      const rotateY = (x - rect.width / 2) / 15;
+
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      overlay.style.transform = `translate(${rotateY}px, ${rotateX}px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0) rotateY(0)';
+      overlay.style.transform = 'translate(0, 0)';
+    });
+  });
+</script>
+<!-- Galeri -->
+<section id="galeri" class="bg-white py-5">
+  <div class="container position-relative">
+    <h2 class="text-center text-muted mb-5" data-aos="fade-down">Galeri</h2>
+
+    <!-- Tombol Geser Galeri -->
+    <button class="btn btn-outline-secondary position-absolute top-50 start-0 translate-middle-y d-none d-md-block" onclick="scrollGallery(-1)">‹</button>
+    <button class="btn btn-outline-secondary position-absolute top-50 end-0 translate-middle-y d-none d-md-block" onclick="scrollGallery(1)">›</button>
+
+    <!-- Scroll Galeri -->
+    <div id="galeriSlider" class="d-flex flex-row flex-nowrap gap-3 px-5" style="overflow-x: auto; scroll-behavior: smooth;">
+      
+      <!-- Item Galeri -->
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 1" data-caption="Keterangan singkat tentang foto ini." data-index="0" data-src="assets/kerja-bakti.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/kerja-bakti.webp" loading="lazy" alt="Alt" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 1">
+      </a>
+
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 2" data-caption="Keterangan singkat tentang foto ini." data-index="1" data-src="assets/kerja.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="200">
+        <img src="assets/kerja.webp" loading="lazy" alt="Alt" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 2">
+      </a>
+
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 3" data-caption="Keterangan singkat tentang foto ini." data-index="2" data-src="assets/pelatihan.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="300">
+        <img src="assets/pelatihan.webp" loading="lazy" alt="Alt" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 3">
+      </a>
+
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 4" data-caption="Kegiatan olahraga sepak bola Karang Taruna." data-index="3" data-src="assets/sepak bola.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="400">
+        <img src="assets/sepak bola.webp" loading="lazy" alt="Alt" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 4">
+      </a>
+
+      <a href="#" class="flex-shrink-0" style="width: 200px;" data-bs-toggle="modal" data-bs-target="#galeriModal"
+        data-title="Judul Foto Galeri 5" data-caption="Pertandingan voli antar RT dalam kegiatan 17-an." data-index="4" data-src="assets/voli.webp"
+        onclick="openGallery(this)" data-aos="fade-up" data-aos-delay="500">
+        <img src="assets/voli.webp" loading="lazy" alt="Alt" class="img-fluid rounded shadow-sm" style="height: 200px; object-fit: cover;" alt="Galeri 5">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Galeri Dinamis -->
+<div class="modal fade" id="galeriModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content text-center">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+      </div>
+      <div class="modal-body">
+        <h5 id="modalTitle" class="mb-3 text-uppercase text-secondary"></h5>
+        <div class="position-relative">
+          <button class="btn btn-light position-absolute top-50 start-0 translate-middle-y" onclick="changePhoto(-1)">‹</button>
+          <img id="modalImage" src="" class="img-fluid rounded mb-3" alt="Preview Galeri">
+          <button class="btn btn-light position-absolute top-50 end-0 translate-middle-y" onclick="changePhoto(1)">›</button>
+        </div>
+        <p id="modalCaption" class="mb-3"></p>
+        <button class="btn btn-primary" data-bs-dismiss="modal"><i class="fas fa-xmark me-2"></i> Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script Scroll Galeri -->
+<script>
+  function scrollGallery(direction) {
+    const container = document.getElementById("galeriSlider");
+    const scrollAmount = 220;
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+</script>
+
+<!-- Script Modal Galeri -->
+<script>
+  const galeriData = [
+    {
+      src: 'assets/kerja-bakti.webp',
+      title: 'Judul Foto Galeri 1',
+      caption: 'Keterangan singkat tentang foto ini.'
+    },
+    {
+      src: 'assets/kerja.webp',
+      title: 'Judul Foto Galeri 2',
+      caption: 'Keterangan singkat tentang foto ini.'
+    },
+    {
+      src: 'assets/pelatihan.webp',
+      title: 'Judul Foto Galeri 3',
+      caption: 'Keterangan singkat tentang foto ini.'
+    },
+    {
+      src: 'assets/sepak bola.webp',
+      title: 'Judul Foto Galeri 4',
+      caption: 'Kegiatan olahraga sepak bola Karang Taruna.'
+    },
+    {
+      src: 'assets/voli.webp',
+      title: 'Judul Foto Galeri 5',
+      caption: 'Pertandingan voli antar RT dalam kegiatan 17-an.'
+    }
+  ];
+
+  let currentIndex = 0;
+
+  function openGallery(element) {
+    currentIndex = parseInt(element.dataset.index);
+    updateModal();
+  }
+
+  function updateModal() {
+    const data = galeriData[currentIndex];
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalImage').src = data.src;
+    document.getElementById('modalImage').alt = data.title;
+    document.getElementById('modalCaption').textContent = data.caption;
+  }
+
+  function changePhoto(direction) {
+    currentIndex = (currentIndex + direction + galeriData.length) % galeriData.length;
+    updateModal();
+  }
+
+  // Optional: support keyboard panah kiri-kanan
+  document.addEventListener('keydown', function (e) {
+    if (document.getElementById('galeriModal').classList.contains('show')) {
+      if (e.key === 'ArrowLeft') changePhoto(-1);
+      if (e.key === 'ArrowRight') changePhoto(1);
+    }
+  });
+</script>
+
+<!-- Inisialisasi AOS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+
+ <!-- Kontak -->
+<section id="kontak" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center text-uppercase text-primary mb-4" data-aos="fade-down">Hubungi Kami</h2>
+    <p class="text-center text-muted mb-5" data-aos="fade-down" data-aos-delay="100">
+      Silakan isi formulir di bawah ini untuk menghubungi kami.
+    </p>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+        <form id="kontakForm" class="p-4 p-md-5 bg-white rounded shadow-sm">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="nama" placeholder="Nama lengkap" required>
+            <label>Nama Lengkap</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="email" placeholder="nama@example.com" required>
+            <label>Email</label>
+          </div>
+          <div class="form-floating mb-4">
+            <textarea class="form-control" name="pesan" placeholder="Tulis pesan Anda..." style="height: 150px" required></textarea>
+            <label>Pesan</label>
+          </div>
+          <div class="text-end">
+            <button type="submit" class="btn btn-primary btn-lg px-4 shadow">Kirim Pesan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  document.getElementById("kontakForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // Ganti URL di bawah dengan URL Web App dari Google Apps Script
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxOoSaUOxC6Qd-3V9rAOHU4D-s2TGtXZUABDcu5RwZRZ3DnzFstGFCJROApkvkouvEr/exec";
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: "POST",
+        body: formData
+      });
+
+      if (response.ok) {
+        Swal.fire({
+          title: 'Berhasil!',
+          text: 'Pesan telah berhasil disimpan ke spreadsheet.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        });
+        form.reset();
+      } else {
+        throw new Error("Gagal kirim");
+      }
+    } catch (error) {
+      Swal.fire({
+        title: 'Gagal!',
+        text: 'Terjadi kesalahan saat mengirim data.',
+        icon: 'error',
+        confirmButtonText: 'Tutup'
+      });
+    }
+  });
+</script>
+
+</section>
+  <!-- Footer -->
+  <footer class="text-white text-center py-4 glass-effect">
+    <p class="mb-0">&copy; 2025 Karang Taruna Wijaya Kusuma. All rights reserved.</p>
+  </footer>
+  <!-- AOS JS -->
+<script>
+  AOS.init({
+    once: true,
+    duration: 800,
+    easing: 'ease-in-out'
+  });
+</script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init();</script>
+ </body>
+</html>
