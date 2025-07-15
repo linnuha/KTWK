@@ -191,7 +191,7 @@
       <div class="card p-4">
         <div class="text-center mb-4">
           <div class="header-container">
-           <img id="previewLogo" src="logo.webp" alt="Logo Preview" class="header-logo">
+           <img id="previewLogo" src="" alt="Logo Preview" class="header-logo" style="display: none;">
             <div>
               <h3 class="mb-0" id="previewLine1">PERKUMPULAN PEMUDA-PEMUDI</h3>
             <h4 class="mb-0" id="previewLine2">RUKUN AGAWE SANTOSA (RAS)</h4>
@@ -317,17 +317,23 @@
     });
 
     document.getElementById('logoUpload').addEventListener('change', function (event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          document.getElementById('previewLogo').src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
+  const file = event.target.files[0];
+  const previewLogo = document.getElementById('previewLogo');
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      previewLogo.src = e.target.result;
+      previewLogo.style.display = 'inline-block'; // tampilkan logo jika ada
+    };
+    reader.readAsDataURL(file);
+  } else {
+    previewLogo.src = '';
+    previewLogo.style.display = 'none'; // sembunyikan jika tidak ada
+  }
+});
   </script>
-           <script>
+             <script>
           window.names = [];
           window.eventDetails = {};
 
@@ -393,82 +399,91 @@
               document.getElementById(fileInputId).value = '';
           }
 
-          document.getElementById('previewButton').addEventListener('click', function() {
-              const locationDate = document.getElementById('locationDateInput').value;
-              const location = document.getElementById('locationInput').value;
-              const tanggal = document.getElementById('tanggalInput').value;
-              const pukul = document.getElementById('pukulInput').value;
-              const tempat = document.getElementById('tempatInput').value;
-              const acara = document.getElementById('acaraInput').value;
-              const ketuaName = document.getElementById('namaKetua').value;
-              const sekretarisName = document.getElementById('namaSekretaris').value;
-              const notes = document.querySelector('input[placeholder="Masukkan catatan tambahan"]').value;
-              const signatureChairman = document.getElementById('signatureImageChairman').src;
-              const signatureSekretaris = document.getElementById('signatureImageSekretaris').src;
+document.getElementById('previewButton').addEventListener('click', function () {
+    const orgLine1 = document.getElementById('orgLine1').value;
+    const orgLine2 = document.getElementById('orgLine2').value;
+    const orgLine3 = document.getElementById('orgLine3').value;
+    const logoSrc = document.getElementById('previewLogo').src;
+    const hasLogo = logoSrc && !logoSrc.includes('undefined') && logoSrc.trim() !== "";
 
-              const previewContainer = document.getElementById('previewContainer');
-              previewContainer.innerHTML = '';
+    const locationDate = document.getElementById('locationDateInput').value;
+    const location = document.getElementById('locationInput').value;
+    const tanggal = document.getElementById('tanggalInput').value;
+    const pukul = document.getElementById('pukulInput').value;
+    const tempat = document.getElementById('tempatInput').value;
+    const acara = document.getElementById('acaraInput').value;
+    const ketuaName = document.getElementById('namaKetua').value;
+    const sekretarisName = document.getElementById('namaSekretaris').value;
+    const notes = document.querySelector('input[placeholder="Masukkan catatan tambahan"]').value;
+    const signatureChairman = document.getElementById('signatureImageChairman').src;
+    const signatureSekretaris = document.getElementById('signatureImageSekretaris').src;
 
-              window.names.forEach(name => {
-                  const previewContent = `
-                      <div class="invitation-card mb-4">
-                          <div class="text-center mb-4">
-                              <div class="header-container">
-                                  <img src="logo.webp" alt="Logo RAS" class="header-logo">
-                                  <div>
-                                      <h3 class="mb-0">PERKUMPULAN PEMUDA-PEMUDI</h3>
-                                      <h4 class="mb-0">RUKUN AGAWE SANTOSA (RAS)</h4>
-                                      <p class="mb-0">Jl. Parangtritis Km 6,5 Ngijo Bangunharjo Sewon Bantul</p>
-                                  </div>
-                              </div>
-                          </div>
-                          <hr>
-                          <div class="header-title">
-                              <h5 class="mb-0">Hal: Undangan</h5>
-                              <div class="top-right">
-                                  <p>${locationDate}</p>
-                              </div>
-                          </div>
-                          <p>Kepada Yth. <br>
-                              <strong>Sdr/i:</strong> ${name}<br>
-                              Di ${location}
-                          </p>
-                          <p style="text-indent: 30px;">Dengan hormat,</p>
-                          <p style="text-indent: 30px;">Sehubungan dengan pelaksanaan acara <em>Pemilihan <p>Calon Ketua & Wakil RAS</em>, kami </p><p>mengundang kehadiran Saudara/i pada:</p>
-                          <div style="padding-left: 30px;">
-                              <p><strong>Hari/Tanggal:</strong> ${tanggal}</p>
-                              <p><strong>Pukul:</strong> ${pukul}</p>
-                              <p><strong>Tempat:</strong> ${tempat}</p>
-                              <p><strong>Acara:</strong> ${acara}</p>
-                          </div>
-                          <p style="text-indent: 30px;">Demikian undangan ini kami sampaikan. Besar harapan kami atas kehadiran Saudara/i tepat waktu. Atas perhatian dan kerja samanya, kami ucapkan terima kasih.</p>
-                          <div class="row text-center mt-4">
-  <<div class="row text-center mt-4 align-items-start">
-  <div class="col-md-6">
-    <!-- Tambahkan padding kosong agar sejajar dengan 'Hormat kami,' di kanan -->
-    <p style="visibility: hidden;"><strong>Hormat kami,</strong></p>
-    <p>Ketua</p>
-    <img src="${signatureChairman}" alt="Tanda Tangan Ketua" class="signature-image" style="display: block; margin: 0 auto; max-height: 80px;">
-    <p>${ketuaName}</p>
-  </div>
-  <div class="col-md-6">
-    <p><strong>Hormat kami,</strong></p>
-    <p>Sekretaris</p>
-    <img src="${signatureSekretaris}" alt="Tanda Tangan Sekretaris" class="signature-image" style="display: block; margin: 0 auto; max-height: 80px;">
-    <p>${sekretarisName}</p>
-  </div>
-</div>
+    const previewContainer = document.getElementById('previewContainer');
+    previewContainer.innerHTML = '';
 
-                          <p><strong>NB:</strong> ${notes}</p>
-                      </div>`;
-                  previewContainer.innerHTML += previewContent;
-              });
+    if (window.names.length === 0) {
+      alert("Harap masukkan minimal satu nama penerima undangan.");
+      return;
+    }
 
-              // Show the modal
-              const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
-              previewModal.show();
-          });
+    window.names.forEach(name => {
+        const previewContent = `
+        <div class="invitation-card mb-4">
+            <div class="text-center mb-4">
+                <div class="header-container">
+                    ${hasLogo ? `<img src="${logoSrc}" alt="Logo RAS" class="header-logo">` : ''}
+                    <div>
+                        <h3 class="mb-0">${orgLine1}</h3>
+                        <h4 class="mb-0">${orgLine2}</h4>
+                        <p class="mb-0">${orgLine3}</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="header-title d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Hal: Undangan</h5>
+                <div class="top-right"><p>${locationDate}</p></div>
+            </div>
+            <p>Kepada Yth. <br>
+            <strong>Sdr/i:</strong> ${name}<br>
+            Di ${location}</p>
 
+            <p style="text-indent: 30px;">Dengan hormat,</p>
+            <p style="text-indent: 30px;">Sehubungan dengan pelaksanaan acara <em>Pemilihan Calon Ketua & Wakil RAS</em>, kami mengundang kehadiran Saudara/i pada:</p>
+
+            <div style="padding-left: 30px;">
+                <p><strong>Hari/Tanggal:</strong> ${tanggal}</p>
+                <p><strong>Pukul:</strong> ${pukul}</p>
+                <p><strong>Tempat:</strong> ${tempat}</p>
+                <p><strong>Acara:</strong> ${acara}</p>
+            </div>
+
+            <p style="text-indent: 30px;">Demikian undangan ini kami sampaikan. Besar harapan kami atas kehadiran Saudara/i tepat waktu. Atas perhatian dan kerja samanya, kami ucapkan terima kasih.</p>
+
+            <div class="row text-center mt-4 align-items-start">
+                <div class="col-md-6">
+                    <p style="visibility: hidden;"><strong>Hormat kami,</strong></p>
+                    <p><strong>Ketua</strong></p>
+                    ${signatureChairman ? `<img src="${signatureChairman}" alt="Tanda Tangan Ketua" class="signature-image" style="display: block; margin: 0 auto; max-height: 80px;">` : ''}
+                    <p>${ketuaName}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Hormat kami,</strong></p>
+                    <p><strong>Sekretaris</strong></p>
+                    ${signatureSekretaris ? `<img src="${signatureSekretaris}" alt="Tanda Tangan Sekretaris" class="signature-image" style="display: block; margin: 0 auto; max-height: 80px;">` : ''}
+                    <p>${sekretarisName}</p>
+                </div>
+            </div>
+
+            ${notes ? `<p><strong>NB:</strong> ${notes}</p>` : ''}
+        </div>
+        `;
+        previewContainer.innerHTML += previewContent;
+    });
+
+    const previewModal = new bootstrap.Modal(document.getElementById('previewModal'));
+    previewModal.show();
+});
           document.getElementById('printButton').addEventListener('click', function() {
               const previewContent = document.getElementById('previewContainer').innerHTML;
               const printWindow = window.open('', '', 'height=600,width=800');
